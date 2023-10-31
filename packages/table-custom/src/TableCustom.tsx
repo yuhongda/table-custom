@@ -70,6 +70,8 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   const [columsLocalStorage, setColumsLocalStorage, { removeItem }] = useLocalStorageState<any>(
     `table-custom-${storageKey}`
   )
+  const [sortedColumsLocalStorage, setSortedColumsLocalStorage, { removeItem: removeItemSort }] =
+    useLocalStorageState<any>(`table-custom-${storageKey}-sorted`)
 
   const [sortInfo, setSortInfo] = useState<any>(null)
 
@@ -77,6 +79,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   // 超时清空localstorage
   if (storageKey && +new Date() - syncTime > EXPIRE_TIME) {
     removeItem()
+    removeItemSort()
   }
 
   const resetColumns = (columns: ColumnTypeCustom<any>[]): ColumnTypeCustom<any>[] =>
@@ -126,24 +129,25 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           sortInfo.oldIndex,
           sortInfo.newIndex
         )
-        setSortInfo(null)
         return newColumns
-      } else if (checkedList) {
-        // sort columns by checkedList
+      } else if (sortedColumsLocalStorage) {
+        // sort columns by sortedColumsLocalStorage
         const newColumns = [...columns]
         newColumns.sort((a: any, b: any) => {
-          const aIndex = checkedList.findIndex((c: any) => c === a.value)
-          const bIndex = checkedList.findIndex((c: any) => c === b.value)
+          const aIndex = sortedColumsLocalStorage.findIndex((c: any) => c.value === a.value)
+          const bIndex = sortedColumsLocalStorage.findIndex((c: any) => c.value === b.value)
           return aIndex - bIndex
         })
         return newColumns.map((c: any) => {
+          const foundItem =
+            sortedColumsLocalStorage.find((item: any) => item.value === c.value)?.children || []
           return {
             ...c,
             children:
               c.children && c.children.length > 0
                 ? c.children.sort((a: any, b: any) => {
-                    const aIndex = checkedList.findIndex((c: any) => c === a.value)
-                    const bIndex = checkedList.findIndex((c: any) => c === b.value)
+                    const aIndex = foundItem.findIndex((c: any) => c.value === a.value)
+                    const bIndex = foundItem.findIndex((c: any) => c.value === b.value)
                     return aIndex - bIndex
                   })
                 : c.children
@@ -152,7 +156,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       }
       return columns
     },
-    [sortInfo, checkedList]
+    [sortInfo?.time, JSON.stringify(sortedColumsLocalStorage)]
   )
 
   const filterColumns = useCallback(
@@ -175,17 +179,11 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
 
   const tableColumns = useMemo(() => {
     if (sortable) {
-      return filterColumns(sortColumns(options))
+      const sortedColumns = sortColumns(options)
+      return filterColumns(sortedColumns)
     }
     return filterColumns(options)
   }, [sortColumns, filterColumns, sortable, options])
-
-  const sortedOptions = useMemo(() => {
-    if (sortable) {
-      return sortColumns(options)
-    }
-    return options
-  }, [sortColumns, options, sortable])
 
   useEffect(() => {
     setCheckedList(
@@ -223,11 +221,11 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   const onSortEnd =
     ({ value }: Record<string, any>) =>
     ({ oldIndex, newIndex }: SortEnd) => {
-      console.log(value, oldIndex, newIndex)
       setSortInfo({
         value,
         oldIndex,
-        newIndex
+        newIndex,
+        time: +new Date()
       })
     }
 
@@ -309,7 +307,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           style={{ width: '100%', flexDirection: 'column' }}
         >
           <Row style={{ width: '100%' }}>
-            {sortedOptions?.map((o: any) => {
+            {sortColumns(options)?.map((o: any) => {
               const checkedChildren = o.children?.filter((c: any) => checkedList.includes(c.value))
               const indeterminate =
                 checkedChildren?.length > 0 && checkedChildren?.length < o.children?.length
