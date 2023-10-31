@@ -35,6 +35,8 @@ const Toolbar = styled.div`
 `
 export interface ColumnTypeCustom<T> extends ColumnType<T> {
   disableCustom?: boolean
+  children?: ColumnTypeCustom<T>[]
+  label?: string
   value?: any
 }
 

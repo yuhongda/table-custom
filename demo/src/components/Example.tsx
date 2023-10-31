@@ -10,7 +10,6 @@ const Container = styled.div`
 `
 
 export const Example: React.FC = () => {
-  console.log(data.groupColumns(), data.groupData())
   return (
     <Container>
       <Typography.Title>Basic</Typography.Title>
@@ -30,6 +29,16 @@ export const Example: React.FC = () => {
         scroll={{
           x: 'max-content'
         }}
+      />
+      <Typography.Title>Sortable</Typography.Title>
+      <TableCustom
+        columns={data.groupColumns()}
+        dataSource={data.groupData()}
+        rowKey="id"
+        scroll={{
+          x: 'max-content'
+        }}
+        sortable
       />
     </Container>
   )

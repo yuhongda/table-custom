@@ -5,7 +5,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import type { RollupOptions } from 'rollup'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
-// import styles from 'rollup-plugin-styles'
+import styles from 'rollup-plugin-styles'
 import { visualizer } from 'rollup-plugin-visualizer'
 const format = process.env.FORMAT || 'es'
 
@@ -21,7 +21,7 @@ const config: RollupOptions = {
     commonjs(),
     // visualizer(),
     json(),
-    // styles({ modules: true })
+    styles({ modules: true })
   ],
   external: ['react', 'react-dom', 'antd', '@ant-design/icons', 'use-local-storage-state']
 }

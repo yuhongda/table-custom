@@ -102,17 +102,22 @@ importers:
       antd: ^4.24.14
       react: ^17.0.2
       react-dom: ^17.0.2
+      react-sortable-hoc: ^2.0.0
+      rollup-plugin-styles: ^4.0.0
       styled-components: ^6.1.0
       use-local-storage-state: '17'
-    devDependencies:
+    dependencies:
       '@ant-design/icons': 4.8.1_sfoxds7t5ydpegc3knd667wn6m
-      '@types/node': 20.8.9
-      '@types/react': 17.0.69
       antd: 4.24.14_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      react-sortable-hoc: 2.0.0_sfoxds7t5ydpegc3knd667wn6m
       styled-components: 6.1.0_sfoxds7t5ydpegc3knd667wn6m
       use-local-storage-state: 17.3.0_sfoxds7t5ydpegc3knd667wn6m
+    devDependencies:
+      '@types/node': 20.8.9
+      '@types/react': 17.0.69
+      rollup-plugin-styles: 4.0.0
 
 packages:
 
@@ -132,11 +137,11 @@ packages:
     resolution: {integrity: sha1-m5NmJXz/zEfbQrnQIDu1ksE8Apg=, tarball: '@ant-design/colors/download/@ant-design/colors-6.0.0.tgz'}
     dependencies:
       '@ctrl/tinycolor': 3.6.1
-    dev: true
+    dev: false
 
   /@ant-design/icons-svg/4.3.1:
     resolution: {integrity: sha1-Sy9loX1NMrUmuqZBSsohFzgr+No=, tarball: '@ant-design/icons-svg/download/@ant-design/icons-svg-4.3.1.tgz'}
-    dev: true
+    dev: false
 
   /@ant-design/icons/4.8.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-RPbIH2CYEdaNSKEj613MR3+PvLc=, tarball: '@ant-design/icons/download/@ant-design/icons-4.8.1.tgz'}
@@ -153,7 +158,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /@ant-design/react-slick/1.0.2_react@17.0.2:
     resolution: {integrity: sha1-JBu0Eq6s9/9dUMYfpdtmdz/ea1Y=, tarball: '@ant-design/react-slick/download/@ant-design/react-slick-1.0.2.tgz'}
@@ -166,7 +171,7 @@ packages:
       react: 17.0.2
       resize-observer-polyfill: 1.5.1
       throttle-debounce: 5.0.0
-    dev: true
+    dev: false
 
   /@babel/cli/7.23.0_@babel+core@7.23.2:
     resolution: {integrity: sha1-HX83xE1BF8Z99GdJ4MhuEaWMxks=, tarball: '@babel/cli/download/@babel/cli-7.23.0.tgz'}
@@ -1469,7 +1474,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
-    dev: true
 
   /@babel/template/7.22.15:
     resolution: {integrity: sha1-CVdu/Dgw8EMPRUjvlx3eE1DvLzg=, tarball: '@babel/template/download/@babel/template-7.22.15.tgz'}
@@ -1530,21 +1534,21 @@ packages:
   /@ctrl/tinycolor/3.6.1:
     resolution: {integrity: sha1-tsdaVqGUfMkW6gWHctZmosiTLzE=, tarball: '@ctrl/tinycolor/download/@ctrl/tinycolor-3.6.1.tgz'}
     engines: {node: '>=10'}
-    dev: true
+    dev: false
 
   /@emotion/is-prop-valid/1.2.1:
     resolution: {integrity: sha1-IxFs8e0Yv+rJEOxkNlYeyxo4hcw=, tarball: '@emotion/is-prop-valid/download/@emotion/is-prop-valid-1.2.1.tgz'}
     dependencies:
       '@emotion/memoize': 0.8.1
-    dev: true
+    dev: false
 
   /@emotion/memoize/0.8.1:
     resolution: {integrity: sha1-wd2wQEKcbSHTjMlF/nXIGM+2jhc=, tarball: '@emotion/memoize/download/@emotion/memoize-0.8.1.tgz'}
-    dev: true
+    dev: false
 
   /@emotion/unitless/0.8.1:
     resolution: {integrity: sha1-GCtaRwTvitkb3pP3qGCoj9kseaM=, tarball: '@emotion/unitless/download/@emotion/unitless-0.8.1.tgz'}
-    dev: true
+    dev: false
 
   /@esbuild/linux-loong64/0.14.54:
     resolution: {integrity: sha1-3ipL5ni9TQ0f+7hubed5zeWZkCg=, tarball: '@esbuild/linux-loong64/download/@esbuild/linux-loong64-0.14.54.tgz'}
@@ -2367,7 +2371,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /@rollup/plugin-commonjs/21.1.0_rollup@2.79.1:
     resolution: {integrity: sha1-RVdte0dgmvLbh/VabUtG5E/DpVM=, tarball: '@rollup/plugin-commonjs/download/@rollup/plugin-commonjs-21.1.0.tgz'}
@@ -2555,6 +2559,11 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
+  /@trysound/sax/0.2.0:
+    resolution: {integrity: sha1-zMqrdYr1Z2Hre/N69vA/Mm3XmK0=, tarball: '@trysound/sax/download/@trysound/sax-0.2.0.tgz'}
+    engines: {node: '>=10.13.0'}
+    dev: true
+
   /@tsconfig/node10/1.0.9:
     resolution: {integrity: sha1-30kH/AeohpImN7FeAtTOvEwAIbI=, tarball: '@tsconfig/node10/download/@tsconfig/node10-1.0.9.tgz'}
     dev: true
@@ -2621,6 +2630,15 @@ packages:
     resolution: {integrity: sha1-5HkkCLEHOE19dGnjtNMUCAeOxiA=, tarball: '@types/cheerio/download/@types/cheerio-0.22.33.tgz'}
     dependencies:
       '@types/node': 20.8.9
+    dev: true
+
+  /@types/cssnano/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-qDUpwUjczJhLzL4zVjlB8Ppr0ek=, tarball: '@types/cssnano/download/@types/cssnano-5.1.0.tgz'}
+    deprecated: This is a stub types definition. cssnano provides its own type definitions, so you do not need this installed.
+    dependencies:
+      cssnano: 5.1.15_postcss@8.4.31
+    transitivePeerDependencies:
+      - postcss
     dev: true
 
   /@types/enzyme/3.10.15:
@@ -2696,6 +2714,10 @@ packages:
     resolution: {integrity: sha1-KRwkPkuU2/vAwO4mt2ZvHVwDDiw=, tarball: '@types/normalize-package-data/download/@types/normalize-package-data-2.4.3.tgz'}
     dev: true
 
+  /@types/parse-json/4.0.1:
+    resolution: {integrity: sha1-J/dVmDateWzqMay2MWOyA3VqW04=, tarball: '@types/parse-json/download/@types/parse-json-4.0.1.tgz'}
+    dev: true
+
   /@types/prettier/2.7.3:
     resolution: {integrity: sha1-PlGhfikdAdF9P8YUIgFakzr3oI8=, tarball: '@types/prettier/download/@types/prettier-2.7.3.tgz'}
     dev: true
@@ -2752,7 +2774,7 @@ packages:
 
   /@types/stylis/4.2.1:
     resolution: {integrity: sha1-hn/LD4FxnZ7O9TP92gPjIIO5WfY=, tarball: '@types/stylis/download/@types/stylis-4.2.1.tgz'}
-    dev: true
+    dev: false
 
   /@types/testing-library__jest-dom/5.14.9:
     resolution: {integrity: sha1-D7HmoCeNh7ZzfbVa9ZZ1cLZ8tGY=, tarball: '@types/testing-library__jest-dom/download/@types/testing-library__jest-dom-5.14.9.tgz'}
@@ -3042,7 +3064,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       scroll-into-view-if-needed: 2.2.31
-    dev: true
+    dev: false
 
   /anymatch/2.0.0:
     resolution: {integrity: sha1-vLJLTzeTTZqnrBe0ra+J58du8us=, tarball: anymatch/download/anymatch-2.0.0.tgz}
@@ -3141,7 +3163,7 @@ packages:
 
   /array-tree-filter/2.1.0:
     resolution: {integrity: sha1-hzrAD+yDdJ8lWsjdCDgUtPYykZA=, tarball: array-tree-filter/download/array-tree-filter-2.1.0.tgz}
-    dev: true
+    dev: false
 
   /array-union/2.1.0:
     resolution: {integrity: sha1-t5hCCtvrHego2ErNii4j0+/oXo0=, tarball: array-union/download/array-union-2.1.0.tgz}
@@ -3230,7 +3252,7 @@ packages:
 
   /async-validator/4.2.5:
     resolution: {integrity: sha1-yW6jMypSFpnQr6rO7VEKVGVsYzk=, tarball: async-validator/download/async-validator-4.2.5.tgz}
-    dev: true
+    dev: false
 
   /async/3.2.4:
     resolution: {integrity: sha1-LSLgD4zd61/eXdM1IrVtHPVpqBw=, tarball: async/download/async-3.2.4.tgz}
@@ -3610,6 +3632,15 @@ packages:
 
   /camelize/1.0.1:
     resolution: {integrity: sha1-ibfhaIQFYzGjXWta0GQzLJHapsM=, tarball: camelize/download/camelize-1.0.1.tgz}
+    dev: false
+
+  /caniuse-api/3.0.0:
+    resolution: {integrity: sha1-Xk2Q4idJYdRikZl99Znj7QCO5MA=, tarball: caniuse-api/download/caniuse-api-3.0.0.tgz}
+    dependencies:
+      browserslist: 4.22.1
+      caniuse-lite: 1.0.30001558
+      lodash.memoize: 4.1.2
+      lodash.uniq: 4.5.0
     dev: true
 
   /caniuse-lite/1.0.30001558:
@@ -3742,7 +3773,7 @@ packages:
 
   /classnames/2.3.2:
     resolution: {integrity: sha1-NR2BO/ATf8xqdqFriCCNJWCg2SQ=, tarball: classnames/download/classnames-2.3.2.tgz}
-    dev: true
+    dev: false
 
   /clean-stack/2.2.0:
     resolution: {integrity: sha1-7oRy27Ep5yezHooQpCfe6d/kAIs=, tarball: clean-stack/download/clean-stack-2.2.0.tgz}
@@ -3861,6 +3892,10 @@ packages:
     hasBin: true
     dev: true
 
+  /colord/2.9.3:
+    resolution: {integrity: sha1-T4zpGd5Fbx1cHDaMMH/iDz5Z+0M=, tarball: colord/download/colord-2.9.3.tgz}
+    dev: true
+
   /columnify/1.6.0:
     resolution: {integrity: sha1-aYlTFxPJAIuylzXmHjes9b1VPPM=, tarball: columnify/download/columnify-1.6.0.tgz}
     engines: {node: '>=8.0.0'}
@@ -3885,6 +3920,11 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
+  /commander/7.2.0:
+    resolution: {integrity: sha1-o2y1fQtQHOEI5NIFWaFQo5HZerc=, tarball: commander/download/commander-7.2.0.tgz}
+    engines: {node: '>= 10'}
+    dev: true
+
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=, tarball: commondir/download/commondir-1.0.1.tgz}
     dev: true
@@ -3902,7 +3942,7 @@ packages:
 
   /compute-scroll-into-view/1.0.20:
     resolution: {integrity: sha1-F2i1Ui0RcnVPXQybAt469r5QakM=, tarball: compute-scroll-into-view/download/compute-scroll-into-view-1.0.20.tgz}
-    dev: true
+    dev: false
 
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=, tarball: concat-map/download/concat-map-0.0.1.tgz}
@@ -4015,7 +4055,7 @@ packages:
     resolution: {integrity: sha1-VaxDoduK5jmkvZlRHBSM3RuDobA=, tarball: copy-to-clipboard/download/copy-to-clipboard-3.3.3.tgz}
     dependencies:
       toggle-selection: 1.0.6
-    dev: true
+    dev: false
 
   /copyfiles/2.4.1:
     resolution: {integrity: sha1-0tz/YKqtEBXwnQtm5/Dxxc08XaU=, tarball: copyfiles/download/copyfiles-2.4.1.tgz}
@@ -4042,6 +4082,17 @@ packages:
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha1-pgQtNjTCsn6TKPg3uWX6yDgI24U=, tarball: core-util-is/download/core-util-is-1.0.3.tgz}
+    dev: true
+
+  /cosmiconfig/7.1.0:
+    resolution: {integrity: sha1-FEO5r6WWtnAILqRsvY9qYrhGNfY=, tarball: cosmiconfig/download/cosmiconfig-7.1.0.tgz}
+    engines: {node: '>=10'}
+    dependencies:
+      '@types/parse-json': 4.0.1
+      import-fresh: 3.3.0
+      parse-json: 5.2.0
+      path-type: 4.0.0
+      yaml: 1.10.2
     dev: true
 
   /cosmiconfig/8.3.6_typescript@4.9.5:
@@ -4087,6 +4138,25 @@ packages:
   /css-color-keywords/1.0.0:
     resolution: {integrity: sha1-/qJhbcZ2spYmhrOvjb2+GAskTgU=, tarball: css-color-keywords/download/css-color-keywords-1.0.0.tgz}
     engines: {node: '>=4'}
+    dev: false
+
+  /css-declaration-sorter/6.4.1_postcss@8.4.31:
+    resolution: {integrity: sha1-KL6sfCC61/F3W+OnEp1+rkCaOnE=, tarball: css-declaration-sorter/download/css-declaration-sorter-6.4.1.tgz}
+    engines: {node: ^10 || ^12 || >=14}
+    peerDependencies:
+      postcss: ^8.0.9
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /css-select/4.3.0:
+    resolution: {integrity: sha1-23EpsoRmYv2GKM/ElquytZ5BUps=, tarball: css-select/download/css-select-4.3.0.tgz}
+    dependencies:
+      boolbase: 1.0.0
+      css-what: 6.1.0
+      domhandler: 4.3.1
+      domutils: 2.8.0
+      nth-check: 2.1.1
     dev: true
 
   /css-select/5.1.0:
@@ -4105,6 +4175,14 @@ packages:
       camelize: 1.0.1
       css-color-keywords: 1.0.0
       postcss-value-parser: 4.2.0
+    dev: false
+
+  /css-tree/1.1.3:
+    resolution: {integrity: sha1-60hw+2/XcHMn7JXC/yqwm16NuR0=, tarball: css-tree/download/css-tree-1.1.3.tgz}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      mdn-data: 2.0.14
+      source-map: 0.6.1
     dev: true
 
   /css-what/6.1.0:
@@ -4124,6 +4202,72 @@ packages:
 
   /cssfontparser/1.2.1:
     resolution: {integrity: sha1-9AIvyPlwDGgCnVQghK+69CWj8+M=, tarball: cssfontparser/download/cssfontparser-1.2.1.tgz}
+    dev: true
+
+  /cssnano-preset-default/5.2.14_postcss@8.4.31:
+    resolution: {integrity: sha1-MJ3vT3t+FtcaskOAUgkzMNmrRdg=, tarball: cssnano-preset-default/download/cssnano-preset-default-5.2.14.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      css-declaration-sorter: 6.4.1_postcss@8.4.31
+      cssnano-utils: 3.1.0_postcss@8.4.31
+      postcss: 8.4.31
+      postcss-calc: 8.2.4_postcss@8.4.31
+      postcss-colormin: 5.3.1_postcss@8.4.31
+      postcss-convert-values: 5.1.3_postcss@8.4.31
+      postcss-discard-comments: 5.1.2_postcss@8.4.31
+      postcss-discard-duplicates: 5.1.0_postcss@8.4.31
+      postcss-discard-empty: 5.1.1_postcss@8.4.31
+      postcss-discard-overridden: 5.1.0_postcss@8.4.31
+      postcss-merge-longhand: 5.1.7_postcss@8.4.31
+      postcss-merge-rules: 5.1.4_postcss@8.4.31
+      postcss-minify-font-values: 5.1.0_postcss@8.4.31
+      postcss-minify-gradients: 5.1.1_postcss@8.4.31
+      postcss-minify-params: 5.1.4_postcss@8.4.31
+      postcss-minify-selectors: 5.2.1_postcss@8.4.31
+      postcss-normalize-charset: 5.1.0_postcss@8.4.31
+      postcss-normalize-display-values: 5.1.0_postcss@8.4.31
+      postcss-normalize-positions: 5.1.1_postcss@8.4.31
+      postcss-normalize-repeat-style: 5.1.1_postcss@8.4.31
+      postcss-normalize-string: 5.1.0_postcss@8.4.31
+      postcss-normalize-timing-functions: 5.1.0_postcss@8.4.31
+      postcss-normalize-unicode: 5.1.1_postcss@8.4.31
+      postcss-normalize-url: 5.1.0_postcss@8.4.31
+      postcss-normalize-whitespace: 5.1.1_postcss@8.4.31
+      postcss-ordered-values: 5.1.3_postcss@8.4.31
+      postcss-reduce-initial: 5.1.2_postcss@8.4.31
+      postcss-reduce-transforms: 5.1.0_postcss@8.4.31
+      postcss-svgo: 5.1.0_postcss@8.4.31
+      postcss-unique-selectors: 5.1.1_postcss@8.4.31
+    dev: true
+
+  /cssnano-utils/3.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-lWhNCMkVEe38cNJjYzjKN+86aGE=, tarball: cssnano-utils/download/cssnano-utils-3.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /cssnano/5.1.15_postcss@8.4.31:
+    resolution: {integrity: sha1-3tZrVIDVEn/LRNrBLqWpg3VRNr8=, tarball: cssnano/download/cssnano-5.1.15.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      cssnano-preset-default: 5.2.14_postcss@8.4.31
+      lilconfig: 2.1.0
+      postcss: 8.4.31
+      yaml: 1.10.2
+    dev: true
+
+  /csso/4.2.0:
+    resolution: {integrity: sha1-6jpWE0bo3J9UbW/r7dUBh884lSk=, tarball: csso/download/csso-4.2.0.tgz}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      css-tree: 1.1.3
     dev: true
 
   /cssom/0.3.8:
@@ -4149,7 +4293,6 @@ packages:
 
   /csstype/3.1.2:
     resolution: {integrity: sha1-HUv51XLxHBQDHwQ24cELwfVx9Qs=, tarball: csstype/download/csstype-3.1.2.tgz}
-    dev: true
 
   /dargs/7.0.0:
     resolution: {integrity: sha1-BAFcQd4Ly2nshAUPPZvgyvjW1cw=, tarball: dargs/download/dargs-7.0.0.tgz}
@@ -4185,7 +4328,7 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.2
-    dev: true
+    dev: false
 
   /dateformat/3.0.3:
     resolution: {integrity: sha1-puN0maTZqc+F71hyBE1ikByYia4=, tarball: dateformat/download/dateformat-3.0.3.tgz}
@@ -4193,7 +4336,7 @@ packages:
 
   /dayjs/1.11.10:
     resolution: {integrity: sha1-aKzqhTF6bhZEV9bWlHVkAppqFqA=, tarball: dayjs/download/dayjs-1.11.10.tgz}
-    dev: true
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha1-XRKFFd8TT/Mn6QpMk/Tgd6U2NB8=, tarball: debug/download/debug-2.6.9.tgz}
@@ -4398,6 +4541,14 @@ packages:
 
   /dom-align/1.12.4:
     resolution: {integrity: sha1-NQOZLrKnz8su07Km0h4LnADVRRE=, tarball: dom-align/download/dom-align-1.12.4.tgz}
+    dev: false
+
+  /dom-serializer/1.4.1:
+    resolution: {integrity: sha1-3l1Bsa6ikCFdxFptrorc8dMuLTA=, tarball: dom-serializer/download/dom-serializer-1.4.1.tgz}
+    dependencies:
+      domelementtype: 2.3.0
+      domhandler: 4.3.1
+      entities: 2.2.0
     dev: true
 
   /dom-serializer/2.0.0:
@@ -4425,11 +4576,26 @@ packages:
       webidl-conversions: 5.0.0
     dev: true
 
+  /domhandler/4.3.1:
+    resolution: {integrity: sha1-jXkgM0FvWdaLwDpap7AYwcqJJ5w=, tarball: domhandler/download/domhandler-4.3.1.tgz}
+    engines: {node: '>= 4'}
+    dependencies:
+      domelementtype: 2.3.0
+    dev: true
+
   /domhandler/5.0.3:
     resolution: {integrity: sha1-zDhff3UfHR/GUMITdIBCVFOMfTE=, tarball: domhandler/download/domhandler-5.0.3.tgz}
     engines: {node: '>= 4'}
     dependencies:
       domelementtype: 2.3.0
+    dev: true
+
+  /domutils/2.8.0:
+    resolution: {integrity: sha1-RDfe9dtuLR9dbuhZvZXKfQIEgTU=, tarball: domutils/download/domutils-2.8.0.tgz}
+    dependencies:
+      dom-serializer: 1.4.1
+      domelementtype: 2.3.0
+      domhandler: 4.3.1
     dev: true
 
   /domutils/3.1.0:
@@ -4521,6 +4687,10 @@ packages:
     engines: {node: '>=8.6'}
     dependencies:
       ansi-colors: 4.1.3
+    dev: true
+
+  /entities/2.2.0:
+    resolution: {integrity: sha1-CY3JDruD2N/6CJ1VJWs1HTTE2lU=, tarball: entities/download/entities-2.2.0.tgz}
     dev: true
 
   /entities/4.5.0:
@@ -5157,6 +5327,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
+    dev: true
+
+  /filter-obj/1.1.0:
+    resolution: {integrity: sha1-mzERErxsYSehbgFsbF1/GeCAXFs=, tarball: filter-obj/download/filter-obj-1.1.0.tgz}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /find-cache-dir/3.3.2:
@@ -5827,6 +6002,15 @@ packages:
     dev: true
     optional: true
 
+  /icss-utils/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-xr5oWKvQE9do6YNmrkfiXViHsa4=, tarball: icss-utils/download/icss-utils-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >= 14}
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
   /ieee754/1.2.1:
     resolution: {integrity: sha1-jrehCmP/8l0VpXsAFYbRd9Gw01I=, tarball: ieee754/download/ieee754-1.2.1.tgz}
     dev: true
@@ -5945,7 +6129,6 @@ packages:
     resolution: {integrity: sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=, tarball: invariant/download/invariant-2.2.4.tgz}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /ip/2.0.0:
     resolution: {integrity: sha1-TPSrGC/uIxTHXt4SdvjIC0eZNto=, tarball: ip/download/ip-2.0.0.tgz}
@@ -7056,7 +7239,6 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha1-GSA/tZmR35jjoocFDUZHzerzJJk=, tarball: js-tokens/download/js-tokens-4.0.0.tgz}
-    dev: true
 
   /js-yaml/3.14.1:
     resolution: {integrity: sha1-2ugS/bOCX6MGYJqHFzg8UMNqBTc=, tarball: js-yaml/download/js-yaml-3.14.1.tgz}
@@ -7193,7 +7375,7 @@ packages:
     resolution: {integrity: sha1-tje9O6nqvhIsg+lyBIOusQ0skEo=, tarball: json2mq/download/json2mq-0.2.0.tgz}
     dependencies:
       string-convert: 0.2.1
-    dev: true
+    dev: false
 
   /json5/1.0.2:
     resolution: {integrity: sha1-Y9mNYPIbMTt3xNbaGL+mnYDh1ZM=, tarball: json5/download/json5-1.0.2.tgz}
@@ -7396,6 +7578,11 @@ packages:
       - supports-color
     dev: true
 
+  /lilconfig/2.1.0:
+    resolution: {integrity: sha1-eOI6yJ67fhv78lsYBD3nVlSOf1I=, tarball: lilconfig/download/lilconfig-2.1.0.tgz}
+    engines: {node: '>=10'}
+    dev: true
+
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha1-7KKE910pZQeTCdwK2SVauy68FjI=, tarball: lines-and-columns/download/lines-and-columns-1.2.4.tgz}
     dev: true
@@ -7518,13 +7705,20 @@ packages:
       lodash.isarray: 3.0.4
     dev: true
 
+  /lodash.memoize/4.1.2:
+    resolution: {integrity: sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=, tarball: lodash.memoize/download/lodash.memoize-4.1.2.tgz}
+    dev: true
+
   /lodash.sortby/4.7.0:
     resolution: {integrity: sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=, tarball: lodash.sortby/download/lodash.sortby-4.7.0.tgz}
     dev: true
 
+  /lodash.uniq/4.5.0:
+    resolution: {integrity: sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=, tarball: lodash.uniq/download/lodash.uniq-4.5.0.tgz}
+    dev: true
+
   /lodash/4.17.21:
     resolution: {integrity: sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=, tarball: lodash/download/lodash-4.17.21.tgz}
-    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha1-P727lbRoOsn8eFER55LlWNSr1QM=, tarball: log-symbols/download/log-symbols-4.1.0.tgz}
@@ -7539,7 +7733,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: true
 
   /lru-cache/10.0.1:
     resolution: {integrity: sha1-Cjvked9UnMoOXWk6xAL/GVN6a3o=, tarball: lru-cache/download/lru-cache-10.0.1.tgz}
@@ -7650,6 +7843,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       object-visit: 1.0.1
+    dev: true
+
+  /mdn-data/2.0.14:
+    resolution: {integrity: sha1-cRP8QoGRfWPOKbQ0RvcB5owlulA=, tarball: mdn-data/download/mdn-data-2.0.14.tgz}
     dev: true
 
   /meow/8.1.2:
@@ -7879,7 +8076,7 @@ packages:
 
   /moment/2.29.4:
     resolution: {integrity: sha1-Pb4FKIn+fBsu2Wb8s6dzKJZO8Qg=, tarball: moment/download/moment-2.29.4.tgz}
-    dev: true
+    dev: false
 
   /moo-color/1.0.3:
     resolution: {integrity: sha1-1WQ1+DWcgoTYOsWAFt90J/6+znQ=, tarball: moo-color/download/moo-color-1.0.3.tgz}
@@ -7932,7 +8129,6 @@ packages:
     resolution: {integrity: sha1-RDOAyFbW6fmCQmfZYLQjatWD6kw=, tarball: nanoid/download/nanoid-3.3.6.tgz}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: true
 
   /nanomatch/1.2.13:
     resolution: {integrity: sha1-uHqKpPwN6P5r6IiVs4mD/yZb0Rk=, tarball: nanomatch/download/nanomatch-1.2.13.tgz}
@@ -8099,6 +8295,11 @@ packages:
   /normalize-path/3.0.0:
     resolution: {integrity: sha1-Dc1p/yOhybEf0JeDFmRKA4ghamU=, tarball: normalize-path/download/normalize-path-3.0.0.tgz}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /normalize-url/6.1.0:
+    resolution: {integrity: sha1-QNCIW1Nd7/4/MUe+yHfQX+TFZoo=, tarball: normalize-url/download/normalize-url-6.1.0.tgz}
+    engines: {node: '>=10'}
     dev: true
 
   /npm-bundled/1.1.2:
@@ -8341,7 +8542,6 @@ packages:
   /object-assign/4.1.1:
     resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=, tarball: object-assign/download/object-assign-4.1.1.tgz}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /object-copy/0.1.0:
     resolution: {integrity: sha1-fn2Fi3gb18mRpBupde04EnVOmYw=, tarball: object-copy/download/object-copy-0.1.0.tgz}
@@ -8751,7 +8951,6 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha1-y1vcdP8/UYkiNur3nWi8RFZKuBw=, tarball: picocolors/download/picocolors-1.0.0.tgz}
-    dev: true
 
   /picomatch/2.3.1:
     resolution: {integrity: sha1-O6ODNzNkbZ0+SZWUbBNlpn+wekI=, tarball: picomatch/download/picomatch-2.3.1.tgz}
@@ -8806,6 +9005,185 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /postcss-calc/8.2.4_postcss@8.4.31:
+    resolution: {integrity: sha1-d7nCm/y+igf/ZpPchwUIKIiXOaU=, tarball: postcss-calc/download/postcss-calc-8.2.4.tgz}
+    peerDependencies:
+      postcss: ^8.2.2
+    dependencies:
+      postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-colormin/5.3.1_postcss@8.4.31:
+    resolution: {integrity: sha1-hsJ8Ju1roA2Wx54I8/+0GNHRmI8=, tarball: postcss-colormin/download/postcss-colormin-5.3.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      browserslist: 4.22.1
+      caniuse-api: 3.0.0
+      colord: 2.9.3
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-convert-values/5.1.3_postcss@8.4.31:
+    resolution: {integrity: sha1-BJmLubprZaoxA11mmmrzQsX505M=, tarball: postcss-convert-values/download/postcss-convert-values-5.1.3.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      browserslist: 4.22.1
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-discard-comments/5.1.2_postcss@8.4.31:
+    resolution: {integrity: sha1-jfXoHSklryeAB1hAwVJvBmDlNpY=, tarball: postcss-discard-comments/download/postcss-discard-comments-5.1.2.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /postcss-discard-duplicates/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-nrT+hFZwak7r1tO3t3fQe60D6Eg=, tarball: postcss-discard-duplicates/download/postcss-discard-duplicates-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /postcss-discard-empty/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-5XdiND/39QP+U/ylU9GNfww2nGw=, tarball: postcss-discard-empty/download/postcss-discard-empty-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /postcss-discard-overridden/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-foxbUzJXR+nZATG7iGNSgvtKJ24=, tarball: postcss-discard-overridden/download/postcss-discard-overridden-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /postcss-merge-longhand/5.1.7_postcss@8.4.31:
+    resolution: {integrity: sha1-JKG99ALZ7w5w9Wjzm9wDRNVo+xY=, tarball: postcss-merge-longhand/download/postcss-merge-longhand-5.1.7.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+      stylehacks: 5.1.1_postcss@8.4.31
+    dev: true
+
+  /postcss-merge-rules/5.1.4_postcss@8.4.31:
+    resolution: {integrity: sha1-Lyb6XKy3WxQC4hN4n2dmrl5AMTw=, tarball: postcss-merge-rules/download/postcss-merge-rules-5.1.4.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      browserslist: 4.22.1
+      caniuse-api: 3.0.0
+      cssnano-utils: 3.1.0_postcss@8.4.31
+      postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
+    dev: true
+
+  /postcss-minify-font-values/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-8d8AFKcmCD0mDTvYXXOF+4nR8Bs=, tarball: postcss-minify-font-values/download/postcss-minify-font-values-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-minify-gradients/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-8f4bT0mBNKUGgkDC8l1G/NI2uiw=, tarball: postcss-minify-gradients/download/postcss-minify-gradients-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      colord: 2.9.3
+      cssnano-utils: 3.1.0_postcss@8.4.31
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-minify-params/5.1.4_postcss@8.4.31:
+    resolution: {integrity: sha1-wGpseHEosyCLOMk2TPxAyKpdc1I=, tarball: postcss-minify-params/download/postcss-minify-params-5.1.4.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      browserslist: 4.22.1
+      cssnano-utils: 3.1.0_postcss@8.4.31
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-minify-selectors/5.2.1_postcss@8.4.31:
+    resolution: {integrity: sha1-1OfmtGFHuBF+qTJakVqAHV/mVsY=, tarball: postcss-minify-selectors/download/postcss-minify-selectors-5.2.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
+    dev: true
+
+  /postcss-modules-extract-imports/3.0.0_postcss@8.4.31:
+    resolution: {integrity: sha1-zaHwR8CugMl9vijD52pDuIAldB0=, tarball: postcss-modules-extract-imports/download/postcss-modules-extract-imports-3.0.0.tgz}
+    engines: {node: ^10 || ^12 || >= 14}
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /postcss-modules-local-by-default/4.0.3_postcss@8.4.31:
+    resolution: {integrity: sha1-sI608IMFBwiZi6LGBhtQwocMpSQ=, tarball: postcss-modules-local-by-default/download/postcss-modules-local-by-default-4.0.3.tgz}
+    engines: {node: ^10 || ^12 || >= 14}
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      icss-utils: 5.1.0_postcss@8.4.31
+      postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-modules-scope/3.0.0_postcss@8.4.31:
+    resolution: {integrity: sha1-nvMVFFbTu/oSDKRImN/Kby+gHwY=, tarball: postcss-modules-scope/download/postcss-modules-scope-3.0.0.tgz}
+    engines: {node: ^10 || ^12 || >= 14}
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
+    dev: true
+
+  /postcss-modules-values/4.0.0_postcss@8.4.31:
+    resolution: {integrity: sha1-18Xn5ow7s8myfL9Iyguz/7RgLJw=, tarball: postcss-modules-values/download/postcss-modules-values-4.0.0.tgz}
+    engines: {node: ^10 || ^12 || >= 14}
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      icss-utils: 5.1.0_postcss@8.4.31
+      postcss: 8.4.31
+    dev: true
+
   /postcss-nested/5.0.6_postcss@8.4.31:
     resolution: {integrity: sha1-RmND9/yNPUavPn26P81H0FKpRbw=, tarball: postcss-nested/download/postcss-nested-5.0.6.tgz}
     engines: {node: '>=12.0'}
@@ -8816,6 +9194,129 @@ packages:
       postcss-selector-parser: 6.0.13
     dev: true
 
+  /postcss-normalize-charset/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-kwLeCykJS1LCWemyz43Ah5h58O0=, tarball: postcss-normalize-charset/download/postcss-normalize-charset-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+    dev: true
+
+  /postcss-normalize-display-values/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-cqu65YCBlg6e3XIA/PIauDJcPag=, tarball: postcss-normalize-display-values/download/postcss-normalize-display-values-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-normalize-positions/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-75cnnYlAh7WTJbRcR/HoY9rvu5I=, tarball: postcss-normalize-positions/download/postcss-normalize-positions-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-normalize-repeat-style/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-6euWgFIE9HZt9m/QntLhNUVCD7I=, tarball: postcss-normalize-repeat-style/download/postcss-normalize-repeat-style-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-normalize-string/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-QRlhFp4HMIyCwfjFXz6KM3dX4ig=, tarball: postcss-normalize-string/download/postcss-normalize-string-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-normalize-timing-functions/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-1WFEEPjwsjiOnyQKpgEbpvUtr7s=, tarball: postcss-normalize-timing-functions/download/postcss-normalize-timing-functions-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-normalize-unicode/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-9nKX/KP+p/F+DSyqQHaa/Eh6oDA=, tarball: postcss-normalize-unicode/download/postcss-normalize-unicode-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      browserslist: 4.22.1
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-normalize-url/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-7Z2IyoLiGr75n3Q0V9NymgQq3Nw=, tarball: postcss-normalize-url/download/postcss-normalize-url-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      normalize-url: 6.1.0
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-normalize-whitespace/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-CKGg0f+henzG7+HmydqWnMRJPPo=, tarball: postcss-normalize-whitespace/download/postcss-normalize-whitespace-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-ordered-values/5.1.3_postcss@8.4.31:
+    resolution: {integrity: sha1-tv0r0Q+TeyPYa8gpxp53Ms526jg=, tarball: postcss-ordered-values/download/postcss-ordered-values-5.1.3.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      cssnano-utils: 3.1.0_postcss@8.4.31
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
+  /postcss-reduce-initial/5.1.2_postcss@8.4.31:
+    resolution: {integrity: sha1-eYzXez4DPq5xBcGMnTcdmJ4TgtY=, tarball: postcss-reduce-initial/download/postcss-reduce-initial-5.1.2.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      browserslist: 4.22.1
+      caniuse-api: 3.0.0
+      postcss: 8.4.31
+    dev: true
+
+  /postcss-reduce-transforms/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-Mztw53WLgC890N3+mLscz++Wtuk=, tarball: postcss-reduce-transforms/download/postcss-reduce-transforms-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+    dev: true
+
   /postcss-selector-parser/6.0.13:
     resolution: {integrity: sha1-0F2NdrHo4XMlfvnWC3Bqjl6Zvxs=, tarball: postcss-selector-parser/download/postcss-selector-parser-6.0.13.tgz}
     engines: {node: '>=4'}
@@ -8824,9 +9325,29 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
+  /postcss-svgo/5.1.0_postcss@8.4.31:
+    resolution: {integrity: sha1-CjF0AM7XifIzoogm53Uj8VhX2A0=, tarball: postcss-svgo/download/postcss-svgo-5.1.0.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-value-parser: 4.2.0
+      svgo: 2.8.0
+    dev: true
+
+  /postcss-unique-selectors/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-qfJz0erNCemqYIj0sFB7GLG1QbY=, tarball: postcss-unique-selectors/download/postcss-unique-selectors-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
+    dev: true
+
   /postcss-value-parser/4.2.0:
     resolution: {integrity: sha1-cjwJkgg2um0+WvAZ+SvAlxwC5RQ=, tarball: postcss-value-parser/download/postcss-value-parser-4.2.0.tgz}
-    dev: true
 
   /postcss/8.4.31:
     resolution: {integrity: sha1-krRRBQqfkU2mdVrzUr3AGSUIZW0=, tarball: postcss/download/postcss-8.4.31.tgz}
@@ -8835,7 +9356,6 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: true
 
   /prelude-ls/1.1.2:
     resolution: {integrity: sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=, tarball: prelude-ls/download/prelude-ls-1.1.2.tgz}
@@ -8917,7 +9437,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /protocols/2.0.1:
     resolution: {integrity: sha1-jxVdo/wPMmROg8V4LI6CEsz3CoY=, tarball: protocols/download/protocols-2.0.1.tgz}
@@ -8950,6 +9469,16 @@ packages:
   /qs/6.5.3:
     resolution: {integrity: sha1-Ou7/yRln7241wOSI70b7KWq3aq0=, tarball: qs/download/qs-6.5.3.tgz}
     engines: {node: '>=0.6'}
+    dev: true
+
+  /query-string/7.1.3:
+    resolution: {integrity: sha1-oc+Q6ZSrsROjJYBKly2YJ2/gIyg=, tarball: query-string/download/query-string-7.1.3.tgz}
+    engines: {node: '>=6'}
+    dependencies:
+      decode-uri-component: 0.2.2
+      filter-obj: 1.1.0
+      split-on-first: 1.1.0
+      strict-uri-encode: 2.0.0
     dev: true
 
   /querystringify/2.2.0:
@@ -8996,7 +9525,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       resize-observer-polyfill: 1.5.1
-    dev: true
+    dev: false
 
   /rc-cascader/3.7.3_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-HirSOLKD9yJs5MnzpCCjXLY/zII=, tarball: rc-cascader/download/rc-cascader-3.7.3.tgz}
@@ -9012,7 +9541,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-checkbox/3.0.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-+Xh3Eym+M51HnNgUZesuL4yCvIc=, tarball: rc-checkbox/download/rc-checkbox-3.0.1.tgz}
@@ -9025,7 +9554,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-collapse/3.4.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-ExC+etTNDc/GIsRfbDtf/e5AOtc=, tarball: rc-collapse/download/rc-collapse-3.4.2.tgz}
@@ -9040,7 +9569,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: true
+    dev: false
 
   /rc-dialog/9.0.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-qt/r3roUXyVsH6ybn1CfiTzbtbg=, tarball: rc-dialog/download/rc-dialog-9.0.2.tgz}
@@ -9055,7 +9584,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-drawer/6.3.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-+K9fr7qxm4NyI2Dc+T6WbYooda0=, tarball: rc-drawer/download/rc-drawer-6.3.0.tgz}
@@ -9070,7 +9599,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-dropdown/4.0.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-9l2dPYl1AkEFfbWdWnXkPNRXa2g=, tarball: rc-dropdown/download/rc-dropdown-4.0.1.tgz}
@@ -9084,7 +9613,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-field-form/1.34.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-hGO3mkSEKjQYmRlfNk6VLEAat/E=, tarball: rc-field-form/download/rc-field-form-1.34.2.tgz}
@@ -9098,7 +9627,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-image/5.13.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Htm4UqQLXv80eGun0vDp0m7quHQ=, tarball: rc-image/download/rc-image-5.13.0.tgz}
@@ -9114,7 +9643,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-input-number/7.3.11_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-xwiXBaIg4aWbqXT6v4lpPgDdJEI=, tarball: rc-input-number/download/rc-input-number-7.3.11.tgz}
@@ -9127,7 +9656,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-input/0.1.4_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-RctLogmubMg1oqy4Yp1PjwyzR+A=, tarball: rc-input/download/rc-input-0.1.4.tgz}
@@ -9140,7 +9669,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-mentions/1.13.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-yIS3DhUFoZfxsyp8azkJDbaZKnI=, tarball: rc-mentions/download/rc-mentions-1.13.1.tgz}
@@ -9156,7 +9685,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-menu/9.8.4_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-WL8Z1HHjx0/0vP2w8Co4JuviVTs=, tarball: rc-menu/download/rc-menu-9.8.4.tgz}
@@ -9172,7 +9701,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-motion/2.9.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-nhihuNYeUoqXNpz5p2AemykgVxA=, tarball: rc-motion/download/rc-motion-2.9.0.tgz}
@@ -9185,7 +9714,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-notification/4.6.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Bo6GdPS9eSakR+ylEpFdS0GxXJE=, tarball: rc-notification/download/rc-notification-4.6.1.tgz}
@@ -9200,7 +9729,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-overflow/1.3.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-cu5J6FoTCNjU471TKF3B8+C8ziw=, tarball: rc-overflow/download/rc-overflow-1.3.2.tgz}
@@ -9214,7 +9743,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-pagination/3.2.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Ty/bqf2sD0jlyfsRQZc4GBOK9+E=, tarball: rc-pagination/download/rc-pagination-3.2.0.tgz}
@@ -9226,7 +9755,7 @@ packages:
       classnames: 2.3.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-picker/2.7.6_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-A9hViI0YeNiUa6t3o9JEd/06B5I=, tarball: rc-picker/download/rc-picker-2.7.6.tgz}
@@ -9245,7 +9774,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: true
+    dev: false
 
   /rc-progress/3.4.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-+N+e6V55BJAXGrazG/BzA83HmYA=, tarball: rc-progress/download/rc-progress-3.4.2.tgz}
@@ -9258,7 +9787,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-rate/2.9.3_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-swqAQ//LMnurBTzXhQjgcBXYpIM=, tarball: rc-rate/download/rc-rate-2.9.3.tgz}
@@ -9272,7 +9801,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-resize-observer/1.4.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-e7ph5rPGBINJgGR8zmRRkUdQ0Mw=, tarball: rc-resize-observer/download/rc-resize-observer-1.4.0.tgz}
@@ -9286,7 +9815,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       resize-observer-polyfill: 1.5.1
-    dev: true
+    dev: false
 
   /rc-segmented/2.1.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-FMkHeh2unCzLLvX7xWYsHEjHzo4=, tarball: rc-segmented/download/rc-segmented-2.1.2.tgz}
@@ -9300,7 +9829,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-select/14.1.18_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-8dlSMxMs2pwUhZYyVCVbg+l6N6k=, tarball: rc-select/download/rc-select-14.1.18.tgz}
@@ -9318,7 +9847,7 @@ packages:
       rc-virtual-list: 3.11.2_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-slider/10.0.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-cFjGj/Hhqk58NTbl4QEovbzLh/k=, tarball: rc-slider/download/rc-slider-10.0.1.tgz}
@@ -9333,7 +9862,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: true
+    dev: false
 
   /rc-steps/5.0.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-LiQD8t1p6zlm1l9GH346juHvaf4=, tarball: rc-steps/download/rc-steps-5.0.0.tgz}
@@ -9347,7 +9876,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-switch/3.2.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-0AH3fxJmTVJZW09vtCXdnmb7qOg=, tarball: rc-switch/download/rc-switch-3.2.2.tgz}
@@ -9360,7 +9889,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-table/7.26.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-nVF+f6US51cf3MRT6xvxnt+sb7w=, tarball: rc-table/download/rc-table-7.26.0.tgz}
@@ -9376,7 +9905,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: true
+    dev: false
 
   /rc-tabs/12.5.10_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-DkHHI/rGbE8LytMnFCn/9mU7ByE=, tarball: rc-tabs/download/rc-tabs-12.5.10.tgz}
@@ -9394,7 +9923,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-textarea/0.4.7_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Yn9mLUb5ngBZ0cHryNtAxlM5/pA=, tarball: rc-textarea/download/rc-textarea-0.4.7.tgz}
@@ -9409,7 +9938,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: true
+    dev: false
 
   /rc-tooltip/5.2.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-5cr6js6/eBCJNqC8uTwVD6gayTs=, tarball: rc-tooltip/download/rc-tooltip-5.2.2.tgz}
@@ -9422,7 +9951,7 @@ packages:
       rc-trigger: 5.3.4_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-tree-select/5.5.5_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-0os7RdoeggzSF2K6Duk8GUKbs2k=, tarball: rc-tree-select/download/rc-tree-select-5.5.5.tgz}
@@ -9437,7 +9966,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-tree/5.7.12_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-aRDlUTkJY3CJNsLL+SX53v9KbXY=, tarball: rc-tree/download/rc-tree-5.7.12.tgz}
@@ -9453,7 +9982,7 @@ packages:
       rc-virtual-list: 3.11.2_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-trigger/5.3.4_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-a0sm4yglZ3yDfR601whQNe7PmmE=, tarball: rc-trigger/download/rc-trigger-5.3.4.tgz}
@@ -9469,7 +9998,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-upload/4.3.5_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Evxpsq900IZGoQSCiDG8r0QHbto=, tarball: rc-upload/download/rc-upload-4.3.5.tgz}
@@ -9482,7 +10011,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /rc-util/5.38.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-GKPRwmujxD+r++YwPoJdq9nl9PA=, tarball: rc-util/download/rc-util-5.38.0.tgz}
@@ -9494,7 +10023,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-is: 18.2.0
-    dev: true
+    dev: false
 
   /rc-virtual-list/3.11.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-64WcIlcjOv8Qhk8EHlvMifeBS7c=, tarball: rc-virtual-list/download/rc-virtual-list-3.11.2.tgz}
@@ -9509,7 +10038,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /react-dom/17.0.2_react@17.0.2:
     resolution: {integrity: sha1-7P+2hF462Nv83EmPDQqTlzZQLCM=, tarball: react-dom/download/react-dom-17.0.2.tgz}
@@ -9520,7 +10049,6 @@ packages:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
-    dev: true
 
   /react-error-boundary/3.1.4_react@17.0.2:
     resolution: {integrity: sha1-JV25KyMZcQh1eoiLAeW3KZGaveA=, tarball: react-error-boundary/download/react-error-boundary-3.1.4.tgz}
@@ -9534,7 +10062,6 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, tarball: react-is/download/react-is-16.13.1.tgz}
-    dev: true
 
   /react-is/17.0.2:
     resolution: {integrity: sha1-5pHUqOnHiTZWVVOas3J2Kw77VPA=, tarball: react-is/download/react-is-17.0.2.tgz}
@@ -9542,7 +10069,6 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha1-GZQx7qqi4J+GQn77tPFHPttHYJs=, tarball: react-is/download/react-is-18.2.0.tgz}
-    dev: true
 
   /react-shallow-renderer/16.15.0_react@17.0.2:
     resolution: {integrity: sha1-SPss+bI9I83pZwj+UnOn00RvRFc=, tarball: react-shallow-renderer/download/react-shallow-renderer-16.15.0.tgz}
@@ -9553,6 +10079,19 @@ packages:
       react: 17.0.2
       react-is: 17.0.2
     dev: true
+
+  /react-sortable-hoc/2.0.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha1-9ngNiqS5IqIfPnVK9ULwMmdweLc=, tarball: react-sortable-hoc/download/react-sortable-hoc-2.0.0.tgz}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0
+      react-dom: ^16.3.0 || ^17.0.0
+    dependencies:
+      '@babel/runtime': 7.23.2
+      invariant: 2.2.4
+      prop-types: 15.8.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
 
   /react-test-renderer/17.0.2_react@17.0.2:
     resolution: {integrity: sha1-TNSuXvGtVnD8Dvd26Mx+EjHZhmw=, tarball: react-test-renderer/download/react-test-renderer-17.0.2.tgz}
@@ -9572,7 +10111,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: true
 
   /read-cmd-shim/4.0.0:
     resolution: {integrity: sha1-ZAoItHOkkEPjlK4MejTdgixzubs=, tarball: read-cmd-shim/download/read-cmd-shim-4.0.0.tgz}
@@ -9713,7 +10251,6 @@ packages:
 
   /regenerator-runtime/0.14.0:
     resolution: {integrity: sha1-XhnWjrEtSG95fhWjxqkY987F60U=, tarball: regenerator-runtime/download/regenerator-runtime-0.14.0.tgz}
-    dev: true
 
   /regenerator-transform/0.15.2:
     resolution: {integrity: sha1-W7rli1IgmOvfCbyi+Dg4kpABx6Q=, tarball: regenerator-transform/download/regenerator-transform-0.15.2.tgz}
@@ -9836,7 +10373,7 @@ packages:
 
   /resize-observer-polyfill/1.5.1:
     resolution: {integrity: sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=, tarball: resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz}
-    dev: true
+    dev: false
 
   /resolve-cwd/3.0.0:
     resolution: {integrity: sha1-DwB18bslRHZs9zumpuKt/ryxPy0=, tarball: resolve-cwd/download/resolve-cwd-3.0.0.tgz}
@@ -9964,6 +10501,32 @@ packages:
     dependencies:
       magic-string: 0.25.9
       rollup-pluginutils: 2.8.2
+    dev: true
+
+  /rollup-plugin-styles/4.0.0:
+    resolution: {integrity: sha1-Ry8QTTPt2if7CJtjoxXjFTFhGCY=, tarball: rollup-plugin-styles/download/rollup-plugin-styles-4.0.0.tgz}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    peerDependencies:
+      rollup: ^2.63.0
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      '@types/cssnano': 5.1.0_postcss@8.4.31
+      cosmiconfig: 7.1.0
+      cssnano: 5.1.15_postcss@8.4.31
+      fs-extra: 10.1.0
+      icss-utils: 5.1.0_postcss@8.4.31
+      mime-types: 2.1.35
+      p-queue: 6.6.2
+      postcss: 8.4.31
+      postcss-modules-extract-imports: 3.0.0_postcss@8.4.31
+      postcss-modules-local-by-default: 4.0.3_postcss@8.4.31
+      postcss-modules-scope: 3.0.0_postcss@8.4.31
+      postcss-modules-values: 4.0.0_postcss@8.4.31
+      postcss-value-parser: 4.2.0
+      query-string: 7.1.3
+      resolve: 1.22.8
+      source-map-js: 1.0.2
+      tslib: 2.6.2
     dev: true
 
   /rollup-plugin-typescript2/0.31.2_zptcx3kz3uwp66hzhyyt545weq:
@@ -10113,13 +10676,12 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: true
 
   /scroll-into-view-if-needed/2.2.31:
     resolution: {integrity: sha1-08SClZ3Eg+N5YtFSElTjKV0NFYc=, tarball: scroll-into-view-if-needed/download/scroll-into-view-if-needed-2.2.31.tgz}
     dependencies:
       compute-scroll-into-view: 1.0.20
-    dev: true
+    dev: false
 
   /semver/5.7.2:
     resolution: {integrity: sha1-SNVdtzfDKHzUg14X+hP+rOHEHvg=, tarball: semver/download/semver-5.7.2.tgz}
@@ -10197,7 +10759,7 @@ packages:
 
   /shallowequal/1.1.0:
     resolution: {integrity: sha1-GI1SHelbkIdAT9TctosT3wrk5/g=, tarball: shallowequal/download/shallowequal-1.1.0.tgz}
-    dev: true
+    dev: false
 
   /shebang-command/1.2.0:
     resolution: {integrity: sha1-RKrGW2lbAzmJaMOfNj/uXer98eo=, tarball: shebang-command/download/shebang-command-1.2.0.tgz}
@@ -10334,7 +10896,6 @@ packages:
   /source-map-js/1.0.2:
     resolution: {integrity: sha1-rbw2HZxi3zgBJefxYfccgm8eSQw=, tarball: source-map-js/download/source-map-js-1.0.2.tgz}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /source-map-resolve/0.5.3:
     resolution: {integrity: sha1-GQhmvs51U+H48mei7oLGBrVQmho=, tarball: source-map-resolve/download/source-map-resolve-0.5.3.tgz}
@@ -10401,6 +10962,11 @@ packages:
     resolution: {integrity: sha1-oU9k4JVPbiXMZYe9TzklItsNmY8=, tarball: spdx-license-ids/download/spdx-license-ids-3.0.16.tgz}
     dev: true
 
+  /split-on-first/1.1.0:
+    resolution: {integrity: sha1-9hCv7uOxK84dDDBCXnY5i3gkml8=, tarball: split-on-first/download/split-on-first-1.1.0.tgz}
+    engines: {node: '>=6'}
+    dev: true
+
   /split-string/3.1.0:
     resolution: {integrity: sha1-fLCd2jqGWFcFxks5pkZgOGguj+I=, tarball: split-string/download/split-string-3.1.0.tgz}
     engines: {node: '>=0.10.0'}
@@ -10454,6 +11020,11 @@ packages:
       minipass: 3.3.6
     dev: true
 
+  /stable/0.1.8:
+    resolution: {integrity: sha1-g26zyDgv4pNv6vVEYxAXzn1Ho88=, tarball: stable/download/stable-0.1.8.tgz}
+    deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
+    dev: true
+
   /stack-utils/1.0.5:
     resolution: {integrity: sha1-oZsLAZR+ACnI5FHV1hpJj1uxRxs=, tarball: stack-utils/download/stack-utils-1.0.5.tgz}
     engines: {node: '>=8'}
@@ -10494,9 +11065,14 @@ packages:
       stubs: 3.0.0
     dev: true
 
+  /strict-uri-encode/2.0.0:
+    resolution: {integrity: sha1-ucczDHBChi9rFC3CdLvMWGbONUY=, tarball: strict-uri-encode/download/strict-uri-encode-2.0.0.tgz}
+    engines: {node: '>=4'}
+    dev: true
+
   /string-convert/0.2.1:
     resolution: {integrity: sha1-aYLMMEn7tM2F+LJFaLnZvznu/5c=, tarball: string-convert/download/string-convert-0.2.1.tgz}
-    dev: true
+    dev: false
 
   /string-length/4.0.2:
     resolution: {integrity: sha1-qKjce9XBqCubPIuH4SX2aHG25Xo=, tarball: string-length/download/string-length-4.0.2.tgz}
@@ -10643,11 +11219,22 @@ packages:
       shallowequal: 1.1.0
       stylis: 4.3.0
       tslib: 2.6.2
+    dev: false
+
+  /stylehacks/5.1.1_postcss@8.4.31:
+    resolution: {integrity: sha1-eTSjTrWdcVIUn6adbp5W8vw0vMk=, tarball: stylehacks/download/stylehacks-5.1.1.tgz}
+    engines: {node: ^10 || ^12 || >=14.0}
+    peerDependencies:
+      postcss: ^8.2.15
+    dependencies:
+      browserslist: 4.22.1
+      postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
     dev: true
 
   /stylis/4.3.0:
     resolution: {integrity: sha1-q+MFpmn8PYd34Q7vz8c62GHFWIw=, tarball: stylis/download/stylis-4.3.0.tgz}
-    dev: true
+    dev: false
 
   /supports-color/5.5.0:
     resolution: {integrity: sha1-4uaaRKyHcveKHsCzW2id9lMO/I8=, tarball: supports-color/download/supports-color-5.5.0.tgz}
@@ -10688,6 +11275,20 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha1-btpL00SjyUrqN21MwxvHcxEDngk=, tarball: supports-preserve-symlinks-flag/download/supports-preserve-symlinks-flag-1.0.0.tgz}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /svgo/2.8.0:
+    resolution: {integrity: sha1-T/gMzmcQ3CeV8MfHQQHmdkz8zSQ=, tarball: svgo/download/svgo-2.8.0.tgz}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dependencies:
+      '@trysound/sax': 0.2.0
+      commander: 7.2.0
+      css-select: 4.3.0
+      css-tree: 1.1.3
+      csso: 4.2.0
+      picocolors: 1.0.0
+      stable: 0.1.8
     dev: true
 
   /symbol-tree/3.2.4:
@@ -10787,7 +11388,7 @@ packages:
   /throttle-debounce/5.0.0:
     resolution: {integrity: sha1-oXpAOegqLtOKXnJo5BMtaWDUGTM=, tarball: throttle-debounce/download/throttle-debounce-5.0.0.tgz}
     engines: {node: '>=12.22'}
-    dev: true
+    dev: false
 
   /through/2.3.8:
     resolution: {integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=, tarball: through/download/through-2.3.8.tgz}
@@ -10857,7 +11458,7 @@ packages:
 
   /toggle-selection/1.0.6:
     resolution: {integrity: sha1-bkWxJj8gF/oKzH2J14sVuL932jI=, tarball: toggle-selection/download/toggle-selection-1.0.6.tgz}
-    dev: true
+    dev: false
 
   /tough-cookie/2.5.0:
     resolution: {integrity: sha1-zZ+yoKodWhK0c72fuW+j3P9lreI=, tarball: tough-cookie/download/tough-cookie-2.5.0.tgz}
@@ -10949,7 +11550,6 @@ packages:
 
   /tslib/2.6.2:
     resolution: {integrity: sha1-cDrClCXns3zW/UVukkBNRtHz5K4=, tarball: tslib/download/tslib-2.6.2.tgz}
-    dev: true
 
   /tuf-js/1.1.7:
     resolution: {integrity: sha1-Ibeukqk3MBW+d9/gyygqgOw7vkM=, tarball: tuf-js/download/tuf-js-1.1.7.tgz}
@@ -11216,7 +11816,7 @@ packages:
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
+    dev: false
 
   /use/3.1.1:
     resolution: {integrity: sha1-1QyMrHmhn7wg8pEfVuuXP04QBw8=, tarball: use/download/use-3.1.1.tgz}
@@ -11591,6 +12191,11 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha1-m7knkNnA7/7GO+c1GeEaNQGaOnI=, tarball: yallist/download/yallist-4.0.0.tgz}
+    dev: true
+
+  /yaml/1.10.2:
+    resolution: {integrity: sha1-IwHF/78StGfejaIzOkWeKeeSDks=, tarball: yaml/download/yaml-1.10.2.tgz}
+    engines: {node: '>= 6'}
     dev: true
 
   /yargs-parser/20.2.4:

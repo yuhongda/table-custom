@@ -38,12 +38,14 @@
     "antd": "^4.24.14",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-sortable-hoc": "^2.0.0",
     "styled-components": "^6.1.0",
     "use-local-storage-state": "17"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",
-    "@types/react": "^17.0.2"
+    "@types/react": "^17.0.2",
+    "rollup-plugin-styles": "^4.0.0"
   },
   "peerDependencies": {
     "@ant-design/icons": "^4.6.2 || ^5.2.6",
