@@ -50,7 +50,7 @@ export interface TableCustomProps<T> {
    * @description: 通过接口获取的columns
    */
   savedColumns?: any[]
-  onChecklistChange?: (checkedList: any[]) => void
+  onChecklistChange?: (checkedList: any[], sortedList: any[]) => void
   title?: string
   sortable?: boolean
   [key: string]: any
@@ -70,8 +70,6 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   const [columsLocalStorage, setColumsLocalStorage, { removeItem }] = useLocalStorageState<any>(
     `table-custom-${storageKey}`
   )
-  const [sortedColumsLocalStorage, setSortedColumsLocalStorage, { removeItem: removeItemSort }] =
-    useLocalStorageState<any>(`table-custom-${storageKey}-sorted`)
 
   const [sortInfo, setSortInfo] = useState<any>(null)
 
@@ -79,7 +77,6 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   // 超时清空localstorage
   if (storageKey && +new Date() - syncTime > EXPIRE_TIME) {
     removeItem()
-    removeItemSort()
   }
 
   const resetColumns = (columns: ColumnTypeCustom<any>[]): ColumnTypeCustom<any>[] =>
@@ -107,6 +104,9 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       )
       .filter((item) => savedColumns?.includes(item))?.length === 0
 
+  const [sortedList, setSortedList] = useState(
+    storageKey && columsLocalStorage?.sortedList ? columsLocalStorage?.sortedList : options
+  )
   const [checkedList, setCheckedList] = useState(
     storageKey && columsLocalStorage?.checkedList
       ? columsLocalStorage?.checkedList
@@ -129,34 +129,35 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           sortInfo.oldIndex,
           sortInfo.newIndex
         )
+        console.log(sortInfo.time)
         return newColumns
-      } else if (sortedColumsLocalStorage) {
-        // sort columns by sortedColumsLocalStorage
+      } else if (sortedList) {
+        // sort columns by sortedList
         const newColumns = [...columns]
         newColumns.sort((a: any, b: any) => {
-          const aIndex = sortedColumsLocalStorage.findIndex((c: any) => c.value === a.value)
-          const bIndex = sortedColumsLocalStorage.findIndex((c: any) => c.value === b.value)
+          const aIndex = sortedList.findIndex((c: any) => c.value === a.value)
+          const bIndex = sortedList.findIndex((c: any) => c.value === b.value)
           return aIndex - bIndex
         })
         return newColumns.map((c: any) => {
-          const foundItem =
-            sortedColumsLocalStorage.find((item: any) => item.value === c.value)?.children || []
+          const foundItem = sortedList.find((item: any) => item.value === c.value)?.children || []
+          const children = [...(c.children || [])]
           return {
             ...c,
             children:
-              c.children && c.children.length > 0
-                ? c.children.sort((a: any, b: any) => {
+              children && children.length > 0
+                ? children.sort((a: any, b: any) => {
                     const aIndex = foundItem.findIndex((c: any) => c.value === a.value)
                     const bIndex = foundItem.findIndex((c: any) => c.value === b.value)
                     return aIndex - bIndex
                   })
-                : c.children
+                : children
           }
         })
       }
       return columns
     },
-    [sortInfo?.time, JSON.stringify(sortedColumsLocalStorage)]
+    [sortInfo?.time, JSON.stringify(sortedList)]
   )
 
   const filterColumns = useCallback(
@@ -185,6 +186,8 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     return filterColumns(options)
   }, [sortColumns, filterColumns, sortable, options])
 
+  const sortedOptions = sortColumns(options)
+
   useEffect(() => {
     setCheckedList(
       storageKey && columsLocalStorage?.checkedList
@@ -206,17 +209,24 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   }, [JSON.stringify(tableColumns)])
 
   useEffect(() => {
+    console.log(sortColumns(options))
+    setSortedList(sortColumns(options))
+  }, [sortColumns])
+
+  useEffect(() => {
     if (storageKey) {
+      console.log(sortedList)
       setColumsLocalStorage({
         checkedList,
+        sortedList,
         syncTime: +new Date()
       })
     }
 
     if (onChecklistChange) {
-      onChecklistChange(checkedList)
+      onChecklistChange(checkedList, sortedList)
     }
-  }, [JSON.stringify(checkedList)])
+  }, [JSON.stringify(checkedList), JSON.stringify(sortedList)])
 
   const onSortEnd =
     ({ value }: Record<string, any>) =>
@@ -307,7 +317,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           style={{ width: '100%', flexDirection: 'column' }}
         >
           <Row style={{ width: '100%' }}>
-            {sortColumns(options)?.map((o: any) => {
+            {sortedOptions?.map((o: any) => {
               const checkedChildren = o.children?.filter((c: any) => checkedList.includes(c.value))
               const indeterminate =
                 checkedChildren?.length > 0 && checkedChildren?.length < o.children?.length
