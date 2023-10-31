@@ -1,0 +1,27 @@
+{
+  "name": "demo",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "use-local-storage-state": "17"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.16",
+    "@vitejs/plugin-react": "^1.0.0",
+    "antd": "^4.17.2",
+    "rollup-plugin-styles": "^4.0.0",
+    "sass": "^1.53.0",
+    "styled-components": "^5.3.3",
+    "typescript": "^4.3.2",
+    "vite": "^2.6.4"
+  }
+}
