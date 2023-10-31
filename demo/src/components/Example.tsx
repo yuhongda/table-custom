@@ -14,6 +14,7 @@ export const Example: React.FC = () => {
     <Container>
       <Typography.Title>Basic</Typography.Title>
       <TableCustom
+        modalTitle="Basic"
         columns={data.basicColumns()}
         dataSource={data.basicData()}
         rowKey="id"
@@ -23,6 +24,7 @@ export const Example: React.FC = () => {
       />
       <Typography.Title>Group</Typography.Title>
       <TableCustom
+        modalTitle="Group"
         columns={data.groupColumns()}
         dataSource={data.groupData()}
         rowKey="id"
@@ -32,6 +34,7 @@ export const Example: React.FC = () => {
       />
       <Typography.Title>Sortable</Typography.Title>
       <TableCustom
+        modalTitle={<div>Sortable</div>}
         storageKey='sortable'
         columns={data.groupColumns()}
         dataSource={data.groupData()}

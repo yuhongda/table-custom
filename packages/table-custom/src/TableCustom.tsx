@@ -51,7 +51,7 @@ export interface TableCustomProps<T> {
    */
   savedColumns?: any[]
   onChecklistChange?: (checkedList: any[], sortedList: any[]) => void
-  title?: string
+  modalTitle?: ReactNode
   sortable?: boolean
   [key: string]: any
 }
@@ -61,7 +61,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   storageKey,
   savedColumns,
   onChecklistChange,
-  title,
+  modalTitle,
   sortable,
   ...rest
 }) => {
@@ -117,48 +117,21 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         )
   )
 
-  const sortColumns = useCallback(
-    (columns: any[]) => {
-      if (sortInfo) {
-        const newColumns = [...columns]
-        const foundChangedIndex = newColumns.findIndex((c: any) => c.value === sortInfo.value)
-        if (foundChangedIndex === -1) return newColumns
-        const children = newColumns[foundChangedIndex].children || []
-        newColumns[foundChangedIndex].children = arrayMove(
-          children,
-          sortInfo.oldIndex,
-          sortInfo.newIndex
-        )
-        console.log(sortInfo.time)
-        return newColumns
-      } else if (sortedList) {
-        // sort columns by sortedList
-        const newColumns = [...columns]
-        newColumns.sort((a: any, b: any) => {
-          const aIndex = sortedList.findIndex((c: any) => c.value === a.value)
-          const bIndex = sortedList.findIndex((c: any) => c.value === b.value)
-          return aIndex - bIndex
-        })
-        return newColumns.map((c: any) => {
-          const foundItem = sortedList.find((item: any) => item.value === c.value)?.children || []
-          const children = [...(c.children || [])]
-          return {
-            ...c,
-            children:
-              children && children.length > 0
-                ? children.sort((a: any, b: any) => {
-                    const aIndex = foundItem.findIndex((c: any) => c.value === a.value)
-                    const bIndex = foundItem.findIndex((c: any) => c.value === b.value)
-                    return aIndex - bIndex
-                  })
-                : children
-          }
-        })
-      }
-      return columns
-    },
-    [sortInfo?.time, JSON.stringify(sortedList)]
-  )
+  useEffect(() => {
+    if (sortInfo) {
+      const newColumns = [...sortedList]
+      const foundChangedIndex = newColumns.findIndex((c: any) => c.value === sortInfo.value)
+      if (foundChangedIndex === -1) return
+      const children = newColumns[foundChangedIndex].children || []
+      newColumns[foundChangedIndex].children = arrayMove(
+        children,
+        sortInfo.oldIndex,
+        sortInfo.newIndex
+      )
+      setSortedList(newColumns)
+      setSortInfo(null)
+    }
+  }, [sortInfo, JSON.stringify(sortedList)])
 
   const filterColumns = useCallback(
     (columns: any[]) =>
@@ -180,13 +153,37 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
 
   const tableColumns = useMemo(() => {
     if (sortable) {
-      const sortedColumns = sortColumns(options)
-      return filterColumns(sortedColumns)
+      return filterColumns(sortedList)
     }
     return filterColumns(options)
-  }, [sortColumns, filterColumns, sortable, options])
+  }, [JSON.stringify(sortedList), filterColumns, sortable, options])
 
-  const sortedOptions = sortColumns(options)
+  const sortedOptions = useMemo(() => {
+    if (sortedList) {
+      // sort options by sortedList
+      const newColumns = [...options]
+      newColumns.sort((a: any, b: any) => {
+        const aIndex = sortedList.findIndex((c: any) => c.value === a.value)
+        const bIndex = sortedList.findIndex((c: any) => c.value === b.value)
+        return aIndex - bIndex
+      })
+      return newColumns.map((c: any) => {
+        const foundItem = sortedList.find((item: any) => item.value === c.value)?.children || []
+        const children = [...(c.children || [])]
+        return {
+          ...c,
+          children:
+            children && children.length > 0
+              ? children.sort((a: any, b: any) => {
+                  const aIndex = foundItem.findIndex((c: any) => c.value === a.value)
+                  const bIndex = foundItem.findIndex((c: any) => c.value === b.value)
+                  return aIndex - bIndex
+                })
+              : children
+        }
+      })
+    }
+  }, [JSON.stringify(sortedList), options])
 
   useEffect(() => {
     setCheckedList(
@@ -209,15 +206,23 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   }, [JSON.stringify(tableColumns)])
 
   useEffect(() => {
-    console.log(sortColumns(options))
-    setSortedList(sortColumns(options))
-  }, [sortColumns])
+    if (storageKey) {
+      setColumsLocalStorage({
+        ...columsLocalStorage,
+        checkedList,
+        syncTime: +new Date()
+      })
+    }
+
+    if (onChecklistChange) {
+      onChecklistChange(checkedList, sortedList)
+    }
+  }, [JSON.stringify(checkedList)])
 
   useEffect(() => {
     if (storageKey) {
-      console.log(sortedList)
       setColumsLocalStorage({
-        checkedList,
+        ...columsLocalStorage,
         sortedList,
         syncTime: +new Date()
       })
@@ -226,7 +231,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     if (onChecklistChange) {
       onChecklistChange(checkedList, sortedList)
     }
-  }, [JSON.stringify(checkedList), JSON.stringify(sortedList)])
+  }, [JSON.stringify(sortedList)])
 
   const onSortEnd =
     ({ value }: Record<string, any>) =>
@@ -234,8 +239,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       setSortInfo({
         value,
         oldIndex,
-        newIndex,
-        time: +new Date()
+        newIndex
       })
     }
 
@@ -246,7 +250,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       </Toolbar>
       <Table columns={tableColumns} {...rest} />
       <Modal
-        title={title}
+        title={modalTitle}
         width={800}
         open={visible}
         visible={visible}
