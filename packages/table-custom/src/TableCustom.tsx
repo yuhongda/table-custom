@@ -1,12 +1,15 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-return-assign */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, { ReactElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { Checkbox, Col, Divider, Modal, Row, Table } from 'antd'
 import type { ColumnType } from 'antd/lib/table'
 import styled from 'styled-components'
 import { SettingOutlined } from '@ant-design/icons'
 import useLocalStorageState from 'use-local-storage-state'
+import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc'
+import type { SortEnd } from 'react-sortable-hoc'
+import s from './style.module.scss'
 
 const EXPIRE_TIME = 24 * 60 * 60 * 1000
 
@@ -48,6 +51,8 @@ export interface TableCustomProps<T> {
    */
   savedColumns?: any[]
   onChecklistChange?: (checkedList: any[]) => void
+  title?: string
+  sortable?: boolean
   [key: string]: any
 }
 
@@ -56,13 +61,17 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   storageKey,
   savedColumns,
   onChecklistChange,
+  title,
+  sortable,
   ...rest
 }) => {
   const [visible, setVisible] = useState(false)
 
   const [columsLocalStorage, setColumsLocalStorage, { removeItem }] = useLocalStorageState<any>(
-    `data-insight-table-custom-${storageKey}`
+    `table-custom-${storageKey}`
   )
+
+  const [sortInfo, setSortInfo] = useState<any>(null)
 
   const { syncTime } = columsLocalStorage || {}
   // 超时清空localstorage
@@ -105,6 +114,79 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         )
   )
 
+  const sortColumns = useCallback(
+    (columns: any[]) => {
+      if (sortInfo) {
+        const newColumns = [...columns]
+        const foundChangedIndex = newColumns.findIndex((c: any) => c.value === sortInfo.value)
+        if (foundChangedIndex === -1) return newColumns
+        const children = newColumns[foundChangedIndex].children || []
+        newColumns[foundChangedIndex].children = arrayMove(
+          children,
+          sortInfo.oldIndex,
+          sortInfo.newIndex
+        )
+        setSortInfo(null)
+        return newColumns
+      } else if (checkedList) {
+        // sort columns by checkedList
+        const newColumns = [...columns]
+        newColumns.sort((a: any, b: any) => {
+          const aIndex = checkedList.findIndex((c: any) => c === a.value)
+          const bIndex = checkedList.findIndex((c: any) => c === b.value)
+          return aIndex - bIndex
+        })
+        return newColumns.map((c: any) => {
+          return {
+            ...c,
+            children:
+              c.children && c.children.length > 0
+                ? c.children.sort((a: any, b: any) => {
+                    const aIndex = checkedList.findIndex((c: any) => c === a.value)
+                    const bIndex = checkedList.findIndex((c: any) => c === b.value)
+                    return aIndex - bIndex
+                  })
+                : c.children
+          }
+        })
+      }
+      return columns
+    },
+    [sortInfo, checkedList]
+  )
+
+  const filterColumns = useCallback(
+    (columns: any[]) =>
+      columns
+        .map((c: any) => {
+          const newColumn = { ...c }
+          if (c.children && c.children.length > 0) {
+            newColumn.children = filterColumns(c.children)
+          }
+
+          if (checkedList.includes(c.key ?? c.dataIndex ?? c.title)) {
+            return newColumn
+          }
+          return false
+        })
+        .filter(Boolean),
+    [checkedList]
+  )
+
+  const tableColumns = useMemo(() => {
+    if (sortable) {
+      return filterColumns(sortColumns(options))
+    }
+    return filterColumns(options)
+  }, [sortColumns, filterColumns, sortable, options])
+
+  const sortedOptions = useMemo(() => {
+    if (sortable) {
+      return sortColumns(options)
+    }
+    return options
+  }, [sortColumns, options, sortable])
+
   useEffect(() => {
     setCheckedList(
       storageKey && columsLocalStorage?.checkedList
@@ -117,21 +199,13 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     )
   }, [columns])
 
-  const filterColumns = (columns: any[]) =>
-    columns
-      .map((c: any) => {
-        const newColumn = { ...c }
-        if (c.children && c.children.length > 0) {
-          newColumn.children = filterColumns(c.children)
-        }
-
-        if (checkedList.includes(c.key ?? c.dataIndex ?? c.title)) {
-          return newColumn
-        }
-        return false
-      })
-      .filter(Boolean)
-  const tableColumns = filterColumns(columns)
+  useEffect(() => {
+    setCheckedList(
+      tableColumns.flatMap((o: any) =>
+        o.children ? [o.value, ...o.children.map((c: any) => c.value)] : o.value
+      )
+    )
+  }, [JSON.stringify(tableColumns)])
 
   useEffect(() => {
     if (storageKey) {
@@ -146,6 +220,17 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     }
   }, [JSON.stringify(checkedList)])
 
+  const onSortEnd =
+    ({ value }: Record<string, any>) =>
+    ({ oldIndex, newIndex }: SortEnd) => {
+      console.log(value, oldIndex, newIndex)
+      setSortInfo({
+        value,
+        oldIndex,
+        newIndex
+      })
+    }
+
   return (
     <Container>
       <Toolbar>
@@ -153,7 +238,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       </Toolbar>
       <Table columns={tableColumns} {...rest} />
       <Modal
-        title="指标设置"
+        title={title}
         width={800}
         open={visible}
         visible={visible}
@@ -224,13 +309,13 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           style={{ width: '100%', flexDirection: 'column' }}
         >
           <Row style={{ width: '100%' }}>
-            {options?.map((o: any) => {
+            {sortedOptions?.map((o: any) => {
               const checkedChildren = o.children?.filter((c: any) => checkedList.includes(c.value))
               const indeterminate =
                 checkedChildren?.length > 0 && checkedChildren?.length < o.children?.length
 
               return isNoChildrenOptions ? (
-                <Col span={6}>
+                <Col span={6} key={o.value}>
                   <Checkbox
                     value={o.value}
                     disabled={o.disableCustom}
@@ -255,15 +340,18 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
                     </Checkbox>
                   </Divider>
                   {o.children && o.children.length > 0 && (
-                    <Row style={{ width: '100%' }}>
-                      {o.children.map((c: any) => (
-                        <Col span={6}>
-                          <Checkbox value={c.value} disabled={c.disableCustom}>
-                            {c.label}
-                          </Checkbox>
-                        </Col>
+                    <CheckboxList
+                      useDragHandle
+                      helperClass={s.sortableHelper}
+                      axis="xy"
+                      onSortEnd={onSortEnd({
+                        value: o.value
+                      })}
+                    >
+                      {o.children.map((c: any, i: number) => (
+                        <CheckboxItem key={c.value} index={i} {...c} sortable={sortable} />
                       ))}
-                    </Row>
+                    </CheckboxList>
                   )}
                 </div>
               )
@@ -274,5 +362,18 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     </Container>
   )
 }
+
+const DragHandle = SortableHandle(() => <span>::</span>)
+const CheckboxItem = SortableElement((c: ColumnTypeCustom<any> & { sortable: boolean }) => (
+  <Col span={6}>
+    <Checkbox value={c.value} disabled={c.disableCustom}>
+      {c.label}
+    </Checkbox>
+    {c.sortable ? <DragHandle /> : null}
+  </Col>
+))
+const CheckboxList = SortableContainer(({ children }: any) => {
+  return <Row style={{ width: '100%' }}>{children}</Row>
+})
 
 export { TableCustom as default }

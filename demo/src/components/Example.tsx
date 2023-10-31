@@ -32,6 +32,7 @@ export const Example: React.FC = () => {
       />
       <Typography.Title>Sortable</Typography.Title>
       <TableCustom
+        storageKey='sortable'
         columns={data.groupColumns()}
         dataSource={data.groupData()}
         rowKey="id"
