@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { TableCustom } from '../../../packages/table-custom/src'
-import { Typography } from 'antd'
+import { Button, Typography } from 'antd'
 import * as data from './data'
 
 const Container = styled.div`
@@ -10,6 +10,7 @@ const Container = styled.div`
 `
 
 export const Example: React.FC = () => {
+  const [visible, setVisible] = useState(false)
   return (
     <Container>
       <Typography.Title>Basic</Typography.Title>
@@ -35,7 +36,7 @@ export const Example: React.FC = () => {
       <Typography.Title>Sortable</Typography.Title>
       <TableCustom
         modalTitle={<div>Sortable</div>}
-        storageKey='sortable'
+        storageKey="sortable"
         columns={data.groupColumns()}
         dataSource={data.groupData()}
         rowKey="id"
@@ -43,6 +44,20 @@ export const Example: React.FC = () => {
           x: 'max-content'
         }}
         sortable
+      />
+      <Typography.Title>Control Custom Modal Open</Typography.Title>
+      <Button onClick={() => setVisible(true)}>Open</Button>
+      <TableCustom
+        modalTitle={<div>openCustomModal</div>}
+        columns={data.groupColumns()}
+        dataSource={data.groupData()}
+        rowKey="id"
+        scroll={{
+          x: 'max-content'
+        }}
+        sortable
+        openCustomModal={visible}
+        onCustomModalClose={() => setVisible(false)}
       />
     </Container>
   )

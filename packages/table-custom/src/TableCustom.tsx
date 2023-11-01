@@ -36,6 +36,13 @@ const Toolbar = styled.div`
     margin: auto;
   }
 `
+
+const Handler = styled.span`
+  cursor: move;
+  font-size: 16px;
+  font-weight: bold;
+`
+
 export interface ColumnTypeCustom<T> extends ColumnType<T> {
   disableCustom?: boolean
   children?: ColumnTypeCustom<T>[]
@@ -53,6 +60,9 @@ export interface TableCustomProps<T> {
   onChecklistChange?: (checkedList: any[], sortedList: any[]) => void
   modalTitle?: ReactNode
   sortable?: boolean
+  sortHandler?: ReactNode
+  openCustomModal?: boolean
+  onCustomModalClose?: () => void
   [key: string]: any
 }
 
@@ -63,6 +73,9 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   onChecklistChange,
   modalTitle,
   sortable,
+  sortHandler,
+  openCustomModal,
+  onCustomModalClose,
   ...rest
 }) => {
   const [visible, setVisible] = useState(false)
@@ -116,6 +129,12 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           o.children ? [o.value, ...o.children.map((c: any) => c.value)] : o.value
         )
   )
+
+  useEffect(() => {
+    if (openCustomModal) {
+      setVisible(true)
+    }
+  }, [openCustomModal])
 
   useEffect(() => {
     if (sortInfo) {
@@ -175,8 +194,8 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           children:
             children && children.length > 0
               ? children.sort((a: any, b: any) => {
-                  const aIndex = foundItem.findIndex((c: any) => c.value === a.value)
-                  const bIndex = foundItem.findIndex((c: any) => c.value === b.value)
+                  const aIndex = foundItem.findIndex((item: any) => item.value === a.value)
+                  const bIndex = foundItem.findIndex((item: any) => item.value === b.value)
                   return aIndex - bIndex
                 })
               : children
@@ -245,17 +264,29 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
 
   return (
     <Container>
-      <Toolbar>
-        <SettingOutlined onClick={() => setVisible(true)} />
-      </Toolbar>
+      {openCustomModal === undefined ? (
+        <Toolbar>
+          <SettingOutlined onClick={() => setVisible(true)} />
+        </Toolbar>
+      ) : null}
       <Table columns={tableColumns} {...rest} />
       <Modal
         title={modalTitle}
         width={800}
         open={visible}
         visible={visible}
-        onOk={() => setVisible(false)}
-        onCancel={() => setVisible(false)}
+        onOk={() => {
+          setVisible(false)
+          if (onCustomModalClose) {
+            onCustomModalClose()
+          }
+        }}
+        onCancel={() => {
+          setVisible(false)
+          if (onCustomModalClose) {
+            onCustomModalClose()
+          }
+        }}
         footer={null}
       >
         <Checkbox.Group
@@ -361,7 +392,13 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
                       })}
                     >
                       {o.children.map((c: any, i: number) => (
-                        <CheckboxItem key={c.value} index={i} {...c} sortable={sortable} />
+                        <CheckboxItem
+                          key={c.value}
+                          index={i}
+                          {...c}
+                          sortable={sortable}
+                          sortHandler={sortHandler}
+                        />
                       ))}
                     </CheckboxList>
                   )}
@@ -375,15 +412,22 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   )
 }
 
-const DragHandle = SortableHandle(() => <span>::</span>)
-const CheckboxItem = SortableElement((c: ColumnTypeCustom<any> & { sortable: boolean }) => (
-  <Col span={6}>
-    <Checkbox value={c.value} disabled={c.disableCustom}>
-      {c.label}
-    </Checkbox>
-    {c.sortable ? <DragHandle /> : null}
-  </Col>
+/**
+ * components for sorting
+ */
+const DragHandle = SortableHandle((props: { handler: React.ReactNode }) => (
+  <Handler>{props.handler ?? '::'}</Handler>
 ))
+const CheckboxItem = SortableElement(
+  (c: ColumnTypeCustom<any> & { sortable?: boolean; sortHandler?: ReactNode }) => (
+    <Col span={6}>
+      <Checkbox value={c.value} disabled={c.disableCustom}>
+        {c.label}
+      </Checkbox>
+      {c.sortable ? <DragHandle handler={c.sortHandler} /> : null}
+    </Col>
+  )
+)
 const CheckboxList = SortableContainer(({ children }: any) => {
   return <Row style={{ width: '100%' }}>{children}</Row>
 })
