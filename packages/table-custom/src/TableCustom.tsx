@@ -7,9 +7,25 @@ import type { ColumnType } from 'antd/lib/table'
 import styled from 'styled-components'
 import { SettingOutlined } from '@ant-design/icons'
 import useLocalStorageState from 'use-local-storage-state'
-import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc'
-import type { SortEnd } from 'react-sortable-hoc'
 import s from './style.module.scss'
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent
+} from '@dnd-kit/core'
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  rectSortingStrategy,
+  verticalListSortingStrategy,
+  arrayMove
+} from '@dnd-kit/sortable'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 const EXPIRE_TIME = 24 * 60 * 60 * 1000
 
@@ -85,6 +101,13 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   )
 
   const [sortInfo, setSortInfo] = useState<any>(null)
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8
+      }
+    })
+  )
 
   const { syncTime } = columsLocalStorage || {}
   // 超时清空localstorage
@@ -252,14 +275,22 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     }
   }, [JSON.stringify(sortedList)])
 
-  const onSortEnd =
+  const handleDragEnd =
     ({ value }: Record<string, any>) =>
-    ({ oldIndex, newIndex }: SortEnd) => {
-      setSortInfo({
-        value,
-        oldIndex,
-        newIndex
-      })
+    (event: DragEndEvent) => {
+      const { active, over } = event
+      const { items } = active.data.current?.sortable ?? {}
+
+      if (active && over && active.id !== over?.id && items) {
+        const oldIndex = items.indexOf(active.id)
+        const newIndex = items.indexOf(over?.id)
+
+        setSortInfo({
+          value,
+          oldIndex,
+          newIndex
+        })
+      }
     }
 
   return (
@@ -352,21 +383,19 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           style={{ width: '100%', flexDirection: 'column' }}
         >
           <Row style={{ width: '100%' }}>
-            {sortedOptions?.map((o: any) => {
+            {sortedOptions?.map((o: any, index: number) => {
               const checkedChildren = o.children?.filter((c: any) => checkedList.includes(c.value))
               const indeterminate =
                 checkedChildren?.length > 0 && checkedChildren?.length < o.children?.length
 
               return isNoChildrenOptions ? (
-                <Col span={6} key={o.value}>
-                  <Checkbox
-                    value={o.value}
-                    disabled={o.disableCustom}
-                    indeterminate={indeterminate}
-                  >
-                    <span style={{ fontSize: 16 }}>{o.label}</span>
-                  </Checkbox>
-                </Col>
+                <CheckboxItem
+                  key={o.value}
+                  index={index}
+                  {...o}
+                  sortable={sortable}
+                  sortHandler={sortHandler}
+                />
               ) : (
                 <div key={o.value} style={{ width: '100%' }}>
                   <Divider
@@ -383,24 +412,28 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
                     </Checkbox>
                   </Divider>
                   {o.children && o.children.length > 0 && (
-                    <CheckboxList
-                      useDragHandle
-                      helperClass={s.sortableHelper}
-                      axis="xy"
-                      onSortEnd={onSortEnd({
-                        value: o.value
-                      })}
+                    <DndContext
+                      sensors={sensors}
+                      collisionDetection={closestCenter}
+                      onDragEnd={handleDragEnd({ value: o.value })}
                     >
-                      {o.children.map((c: any, i: number) => (
-                        <CheckboxItem
-                          key={c.value}
-                          index={i}
-                          {...c}
-                          sortable={sortable}
-                          sortHandler={sortHandler}
-                        />
-                      ))}
-                    </CheckboxList>
+                      <Row style={{ width: '100%' }}>
+                        <SortableContext
+                          items={o.children.map((c) => c.value)}
+                          strategy={rectSortingStrategy}
+                        >
+                          {o.children.map((c: any, i: number) => (
+                            <CheckboxItem
+                              key={c.value}
+                              id={c.value}
+                              {...c}
+                              sortable={sortable}
+                              sortHandler={sortHandler}
+                            />
+                          ))}
+                        </SortableContext>
+                      </Row>
+                    </DndContext>
                   )}
                 </div>
               )
@@ -415,21 +448,31 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
 /**
  * components for sorting
  */
-const DragHandle = SortableHandle((props: { handler: React.ReactNode }) => (
-  <Handler>{props.handler ?? '::'}</Handler>
-))
-const CheckboxItem = SortableElement(
-  (c: ColumnTypeCustom<any> & { sortable?: boolean; sortHandler?: ReactNode }) => (
-    <Col span={6}>
-      <Checkbox value={c.value} disabled={c.disableCustom}>
-        {c.label}
+const CheckboxItem: React.FC<
+  ColumnTypeCustom<any> & { sortable?: boolean; sortHandler?: ReactNode; id: string }
+> = (props) => {
+  const { attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef } =
+    useSortable({
+      id: props.id,
+      resizeObserverConfig: { box: 'border-box' }
+    })
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition
+  }
+
+  return (
+    <Col span={6} ref={setNodeRef} style={style} {...attributes}>
+      <Checkbox value={props.value} disabled={props.disableCustom}>
+        {props.label}
       </Checkbox>
-      {c.sortable ? <DragHandle handler={c.sortHandler} /> : null}
+      {props.sortable ? (
+        <Handler ref={setActivatorNodeRef} {...listeners}>
+          {props.sortHandler ?? '::'}
+        </Handler>
+      ) : null}
     </Col>
   )
-)
-const CheckboxList = SortableContainer(({ children }: any) => {
-  return <Row style={{ width: '100%' }}>{children}</Row>
-})
+}
 
 export { TableCustom as default }

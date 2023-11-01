@@ -33,10 +33,22 @@ export const Example: React.FC = () => {
           x: 'max-content'
         }}
       />
-      <Typography.Title>Sortable</Typography.Title>
+      <Typography.Title>Sortable - basic</Typography.Title>
       <TableCustom
-        modalTitle={<div>Sortable</div>}
-        storageKey="sortable"
+        modalTitle={<div>Sortable - basic</div>}
+        storageKey="sortable-basic"
+        columns={data.basicColumns()}
+        dataSource={data.basicData()}
+        rowKey="id"
+        scroll={{
+          x: 'max-content'
+        }}
+        sortable
+      />
+      <Typography.Title>Sortable - group</Typography.Title>
+      <TableCustom
+        modalTitle={<div>Sortable - group</div>}
+        storageKey="sortable-group"
         columns={data.groupColumns()}
         dataSource={data.groupData()}
         rowKey="id"
