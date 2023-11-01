@@ -161,15 +161,21 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
 
   useEffect(() => {
     if (sortInfo) {
-      const newColumns = [...sortedList]
-      const foundChangedIndex = newColumns.findIndex((c: any) => c.value === sortInfo.value)
-      if (foundChangedIndex === -1) return
-      const children = newColumns[foundChangedIndex].children || []
-      newColumns[foundChangedIndex].children = arrayMove(
-        children,
-        sortInfo.oldIndex,
-        sortInfo.newIndex
-      )
+      let newColumns = [...sortedList]
+      if (sortInfo.value === null) {
+        const oldIndex = sortInfo.oldIndex
+        const newIndex = sortInfo.newIndex
+        newColumns = arrayMove(newColumns, oldIndex, newIndex)
+      } else {
+        const foundChangedIndex = newColumns.findIndex((c: any) => c.value === sortInfo.value)
+        if (foundChangedIndex === -1) return
+        const children = newColumns[foundChangedIndex].children || []
+        newColumns[foundChangedIndex].children = arrayMove(
+          children,
+          sortInfo.oldIndex,
+          sortInfo.newIndex
+        )
+      }
       setSortedList(newColumns)
       setSortInfo(null)
     }
@@ -382,63 +388,70 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
           }}
           style={{ width: '100%', flexDirection: 'column' }}
         >
-          <Row style={{ width: '100%' }}>
-            {sortedOptions?.map((o: any, index: number) => {
-              const checkedChildren = o.children?.filter((c: any) => checkedList.includes(c.value))
-              const indeterminate =
-                checkedChildren?.length > 0 && checkedChildren?.length < o.children?.length
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd({ value: null })}
+          >
+            <Row style={{ width: '100%' }}>
+              <SortableContext
+                items={sortedOptions?.map((o) => o.value) ?? []}
+                strategy={rectSortingStrategy}
+              >
+                {sortedOptions?.map((o: any, index: number) => {
+                  const checkedChildren = o.children?.filter((c: any) =>
+                    checkedList.includes(c.value)
+                  )
+                  const indeterminate =
+                    checkedChildren?.length > 0 && checkedChildren?.length < o.children?.length
 
-              return isNoChildrenOptions ? (
-                <CheckboxItem
-                  key={o.value}
-                  index={index}
-                  {...o}
-                  sortable={sortable}
-                  sortHandler={sortHandler}
-                />
-              ) : (
-                <div key={o.value} style={{ width: '100%' }}>
-                  <Divider
-                    orientation="left"
-                    orientationMargin="0"
-                    style={{ margin: '24px 0 8px 0' }}
-                  >
-                    <Checkbox
-                      value={o.value}
-                      disabled={o.disableCustom}
+                  return isNoChildrenOptions ? (
+                    <CheckboxItem
+                      key={o.value}
+                      id={o.value}
+                      {...o}
+                      sortable={sortable}
+                      sortHandler={sortHandler}
+                    />
+                  ) : (
+                    <CheckboxGroupItem
+                      key={o.value}
+                      id={o.value}
+                      {...o}
                       indeterminate={indeterminate}
+                      sortable={sortable}
+                      sortHandler={sortHandler}
                     >
-                      <span style={{ fontSize: 16 }}>{o.label}</span>
-                    </Checkbox>
-                  </Divider>
-                  {o.children && o.children.length > 0 && (
-                    <DndContext
-                      sensors={sensors}
-                      collisionDetection={closestCenter}
-                      onDragEnd={handleDragEnd({ value: o.value })}
-                    >
-                      <Row style={{ width: '100%' }}>
-                        <SortableContext
-                          items={o.children.map((c) => c.value)}
-                          strategy={rectSortingStrategy}
+                      {o.children && o.children.length > 0 && (
+                        <DndContext
+                          sensors={sensors}
+                          collisionDetection={closestCenter}
+                          onDragEnd={handleDragEnd({ value: o.value })}
                         >
-                          {o.children.map((c: any, i: number) => (
-                            <CheckboxItem
-                              key={c.value}
-                              id={c.value}
-                              {...c}
-                              sortable={sortable}
-                              sortHandler={sortHandler}
-                            />
-                          ))}
-                        </SortableContext>
-                      </Row>
-                    </DndContext>
-                  )}
-                </div>
-              )
-            })}
-          </Row>
+                          <Row style={{ width: '100%' }}>
+                            <SortableContext
+                              items={o.children.map((c) => c.value)}
+                              strategy={rectSortingStrategy}
+                            >
+                              {o.children.map((c: any, i: number) => (
+                                <CheckboxItem
+                                  key={c.value}
+                                  id={c.value}
+                                  {...c}
+                                  sortable={sortable}
+                                  sortHandler={sortHandler}
+                                />
+                              ))}
+                            </SortableContext>
+                          </Row>
+                        </DndContext>
+                      )}
+                    </CheckboxGroupItem>
+                  )
+                })}
+              </SortableContext>
+            </Row>
+          </DndContext>
         </Checkbox.Group>
       </Modal>
     </Container>
@@ -472,6 +485,46 @@ const CheckboxItem: React.FC<
         </Handler>
       ) : null}
     </Col>
+  )
+}
+
+const CheckboxGroupItem: React.FC<
+  ColumnTypeCustom<any> & {
+    sortable?: boolean
+    sortHandler?: ReactNode
+    id: string
+    indeterminate: boolean
+  }
+> = (props) => {
+  const { attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef } =
+    useSortable({
+      id: props.id,
+      resizeObserverConfig: { box: 'border-box' }
+    })
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    width: '100%'
+  }
+
+  return (
+    <div key={props.value} ref={setNodeRef} style={style} {...attributes}>
+      <Divider orientation="left" orientationMargin="0" style={{ margin: '24px 0 8px 0' }}>
+        <Checkbox
+          value={props.value}
+          disabled={props.disableCustom}
+          indeterminate={props.indeterminate}
+        >
+          <span style={{ fontSize: 16 }}>{props.label}</span>
+        </Checkbox>
+        {props.sortable ? (
+          <Handler ref={setActivatorNodeRef} {...listeners}>
+            {props.sortHandler ?? '::'}
+          </Handler>
+        ) : null}
+      </Divider>
+      {props.children}
+    </div>
   )
 }
 
