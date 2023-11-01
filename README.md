@@ -1,6 +1,6 @@
 # table-custom 📦
 
-> A wrapper  [ant-design](https://github.com/ant-design/ant-design)
+> A table component with sorting and toggle display on columns. Based on [ant-design](https://github.com/ant-design/ant-design)
 
 
 ## 🎨 Features
