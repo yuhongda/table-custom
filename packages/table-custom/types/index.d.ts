@@ -1,9 +1,11 @@
 import * as React from 'react';
-import React__default from 'react';
+import React__default, { ReactNode } from 'react';
 import { ColumnType } from 'antd/lib/table';
 
 interface ColumnTypeCustom<T> extends ColumnType<T> {
     disableCustom?: boolean;
+    children?: ColumnTypeCustom<T>[];
+    label?: string;
     value?: any;
 }
 interface TableCustomProps<T> {
@@ -13,7 +15,12 @@ interface TableCustomProps<T> {
      * @description: 通过接口获取的columns
      */
     savedColumns?: any[];
-    onChecklistChange?: (checkedList: any[]) => void;
+    onChecklistChange?: (checkedList: any[], sortedList: any[]) => void;
+    modalTitle?: ReactNode;
+    sortable?: boolean;
+    sortHandler?: ReactNode;
+    openCustomModal?: boolean;
+    onCustomModalClose?: () => void;
     [key: string]: any;
 }
 declare const TableCustom: React__default.FC<TableCustomProps<any>>;

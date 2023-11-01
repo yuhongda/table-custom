@@ -288,6 +288,14 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       const { items } = active.data.current?.sortable ?? {}
 
       if (active && over && active.id !== over?.id && items) {
+        const foundItem =
+          sortedOptions
+            ?.flatMap((o: any) => [o, ...o.children])
+            .find((item: any) => item.value === over.id)
+        if (foundItem?.disableCustom) {
+          return
+        }
+
         const oldIndex = items.indexOf(active.id)
         const newIndex = items.indexOf(over?.id)
 
@@ -430,7 +438,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
                         >
                           <Row style={{ width: '100%' }}>
                             <SortableContext
-                              items={o.children.map((c) => c.value)}
+                              items={o.children.map((c: ColumnTypeCustom<any>) => c.value)}
                               strategy={rectSortingStrategy}
                             >
                               {o.children.map((c: any, i: number) => (
@@ -467,7 +475,8 @@ const CheckboxItem: React.FC<
   const { attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef } =
     useSortable({
       id: props.id,
-      resizeObserverConfig: { box: 'border-box' }
+      disabled: props.disableCustom,
+      resizeObserverConfig: {}
     })
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -499,7 +508,8 @@ const CheckboxGroupItem: React.FC<
   const { attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef } =
     useSortable({
       id: props.id,
-      resizeObserverConfig: { box: 'border-box' }
+      disabled: props.disableCustom,
+      resizeObserverConfig: {}
     })
   const style = {
     transform: CSS.Transform.toString(transform),
