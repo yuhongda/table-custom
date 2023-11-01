@@ -248,6 +248,14 @@ var TableCustom = exports["default"] = function TableCustom(_ref) {
       var _ref7 = (_active$data$current$ = (_active$data$current = active.data.current) === null || _active$data$current === void 0 ? void 0 : _active$data$current.sortable) !== null && _active$data$current$ !== void 0 ? _active$data$current$ : {},
         items = _ref7.items;
       if (active && over && active.id !== (over === null || over === void 0 ? void 0 : over.id) && items) {
+        var foundItem = sortedOptions === null || sortedOptions === void 0 ? void 0 : sortedOptions.flatMap(function (o) {
+          return [o].concat(_toConsumableArray(o.children));
+        }).find(function (item) {
+          return item.value === over.id;
+        });
+        if (foundItem !== null && foundItem !== void 0 && foundItem.disableCustom) {
+          return;
+        }
         var oldIndex = items.indexOf(active.id);
         var newIndex = items.indexOf(over === null || over === void 0 ? void 0 : over.id);
         setSortInfo({
@@ -418,6 +426,7 @@ var CheckboxItem = function CheckboxItem(props) {
   var _props$sortHandler;
   var _useSortable = (0, _sortable.useSortable)({
       id: props.id,
+      disabled: props.disableCustom,
       resizeObserverConfig: {}
     }),
     attributes = _useSortable.attributes,
@@ -445,6 +454,7 @@ var CheckboxGroupItem = function CheckboxGroupItem(props) {
   var _props$sortHandler2;
   var _useSortable2 = (0, _sortable.useSortable)({
       id: props.id,
+      disabled: props.disableCustom,
       resizeObserverConfig: {}
     }),
     attributes = _useSortable2.attributes,

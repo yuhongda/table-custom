@@ -4527,6 +4527,10 @@ const TableCustom = (_a) => {
     const { active, over } = event;
     const { items } = (_b3 = (_a3 = active.data.current) == null ? void 0 : _a3.sortable) != null ? _b3 : {};
     if (active && over && active.id !== (over == null ? void 0 : over.id) && items) {
+      const foundItem = sortedOptions == null ? void 0 : sortedOptions.flatMap((o) => [o, ...o.children]).find((item) => item.value === over.id);
+      if (foundItem == null ? void 0 : foundItem.disableCustom) {
+        return;
+      }
       const oldIndex = items.indexOf(active.id);
       const newIndex = items.indexOf(over == null ? void 0 : over.id);
       setSortInfo({
@@ -4656,6 +4660,7 @@ const CheckboxItem = (props) => {
   var _a;
   const { attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef } = useSortable({
     id: props.id,
+    disabled: props.disableCustom,
     resizeObserverConfig: {}
   });
   const style = {
@@ -4677,6 +4682,7 @@ const CheckboxGroupItem = (props) => {
   var _a;
   const { attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef } = useSortable({
     id: props.id,
+    disabled: props.disableCustom,
     resizeObserverConfig: {}
   });
   const style = {
