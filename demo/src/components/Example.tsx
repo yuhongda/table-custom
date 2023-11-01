@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { TableCustom } from '../../../packages/table-custom/src'
+// import { TableCustom } from '../../../packages/table-custom/src'
+import { TableCustom } from '@silverage/table-custom'
 import { Button, Typography } from 'antd'
 import * as data from './data'
 
