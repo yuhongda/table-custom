@@ -1,5 +1,5 @@
 {
-  "name": "table-custom",
+  "name": "@silverage/table-custom",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -9,7 +9,6 @@
   "license": "MIT",
   "scripts": {
     "build": "nx run-many --target=build --all",
-    "patch": "lerna version patch",
     "release": "lerna run release --npm-client=npm",
     "test": "NODE_ENV=test jest",
     "jest:clear": "jest --clearCache",
@@ -48,7 +47,6 @@
     "jest-css-modules-transform": "^4.3.0",
     "jest-enzyme": "^7.1.2",
     "lerna": "^7.2.0",
-    "nx": "14.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.54.0",
