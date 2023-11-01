@@ -8,7 +8,7 @@
   "description": "",
   "license": "MIT",
   "scripts": {
-    "build": "nx run-many --target=build --all",
+    "build": "lerna run build",
     "release": "lerna run release --npm-client=npm",
     "test": "NODE_ENV=test jest",
     "jest:clear": "jest --clearCache",
