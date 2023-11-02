@@ -108,20 +108,20 @@ importers:
       styled-components: ^6.1.0
       use-local-storage-state: '17'
     dependencies:
-      '@ant-design/icons': 4.8.1_sfoxds7t5ydpegc3knd667wn6m
       '@dnd-kit/core': 6.0.8_sfoxds7t5ydpegc3knd667wn6m
       '@dnd-kit/modifiers': 6.0.1_t27c2n57fgirhmvux7d536sgxm
       '@dnd-kit/sortable': 7.0.2_t27c2n57fgirhmvux7d536sgxm
       '@dnd-kit/utilities': 3.2.1_react@17.0.2
+      styled-components: 6.1.0_sfoxds7t5ydpegc3knd667wn6m
+    devDependencies:
+      '@ant-design/icons': 4.8.1_sfoxds7t5ydpegc3knd667wn6m
+      '@types/node': 20.8.9
+      '@types/react': 17.0.69
       antd: 4.24.14_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      styled-components: 6.1.0_sfoxds7t5ydpegc3knd667wn6m
-      use-local-storage-state: 17.3.0_sfoxds7t5ydpegc3knd667wn6m
-    devDependencies:
-      '@types/node': 20.8.9
-      '@types/react': 17.0.69
       rollup-plugin-styles: 4.0.0
+      use-local-storage-state: 17.3.0_sfoxds7t5ydpegc3knd667wn6m
 
 packages:
 
@@ -141,11 +141,11 @@ packages:
     resolution: {integrity: sha1-m5NmJXz/zEfbQrnQIDu1ksE8Apg=, tarball: '@ant-design/colors/download/@ant-design/colors-6.0.0.tgz'}
     dependencies:
       '@ctrl/tinycolor': 3.6.1
-    dev: false
+    dev: true
 
   /@ant-design/icons-svg/4.3.1:
     resolution: {integrity: sha1-Sy9loX1NMrUmuqZBSsohFzgr+No=, tarball: '@ant-design/icons-svg/download/@ant-design/icons-svg-4.3.1.tgz'}
-    dev: false
+    dev: true
 
   /@ant-design/icons/4.8.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-RPbIH2CYEdaNSKEj613MR3+PvLc=, tarball: '@ant-design/icons/download/@ant-design/icons-4.8.1.tgz'}
@@ -162,7 +162,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /@ant-design/react-slick/1.0.2_react@17.0.2:
     resolution: {integrity: sha1-JBu0Eq6s9/9dUMYfpdtmdz/ea1Y=, tarball: '@ant-design/react-slick/download/@ant-design/react-slick-1.0.2.tgz'}
@@ -175,7 +175,7 @@ packages:
       react: 17.0.2
       resize-observer-polyfill: 1.5.1
       throttle-debounce: 5.0.0
-    dev: false
+    dev: true
 
   /@babel/cli/7.23.0_@babel+core@7.23.2:
     resolution: {integrity: sha1-HX83xE1BF8Z99GdJ4MhuEaWMxks=, tarball: '@babel/cli/download/@babel/cli-7.23.0.tgz'}
@@ -1478,6 +1478,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+    dev: true
 
   /@babel/template/7.22.15:
     resolution: {integrity: sha1-CVdu/Dgw8EMPRUjvlx3eE1DvLzg=, tarball: '@babel/template/download/@babel/template-7.22.15.tgz'}
@@ -1538,7 +1539,7 @@ packages:
   /@ctrl/tinycolor/3.6.1:
     resolution: {integrity: sha1-tsdaVqGUfMkW6gWHctZmosiTLzE=, tarball: '@ctrl/tinycolor/download/@ctrl/tinycolor-3.6.1.tgz'}
     engines: {node: '>=10'}
-    dev: false
+    dev: true
 
   /@dnd-kit/accessibility/3.0.1_react@17.0.2:
     resolution: {integrity: sha1-PMvv38pZWwojpdxX096WvGk1ZBw=, tarball: '@dnd-kit/accessibility/download/@dnd-kit/accessibility-3.0.1.tgz'}
@@ -2411,7 +2412,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /@rollup/plugin-commonjs/21.1.0_rollup@2.79.1:
     resolution: {integrity: sha1-RVdte0dgmvLbh/VabUtG5E/DpVM=, tarball: '@rollup/plugin-commonjs/download/@rollup/plugin-commonjs-21.1.0.tgz'}
@@ -3100,7 +3101,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       scroll-into-view-if-needed: 2.2.31
-    dev: false
+    dev: true
 
   /anymatch/2.0.0:
     resolution: {integrity: sha1-vLJLTzeTTZqnrBe0ra+J58du8us=, tarball: anymatch/download/anymatch-2.0.0.tgz}
@@ -3199,7 +3200,7 @@ packages:
 
   /array-tree-filter/2.1.0:
     resolution: {integrity: sha1-hzrAD+yDdJ8lWsjdCDgUtPYykZA=, tarball: array-tree-filter/download/array-tree-filter-2.1.0.tgz}
-    dev: false
+    dev: true
 
   /array-union/2.1.0:
     resolution: {integrity: sha1-t5hCCtvrHego2ErNii4j0+/oXo0=, tarball: array-union/download/array-union-2.1.0.tgz}
@@ -3288,7 +3289,7 @@ packages:
 
   /async-validator/4.2.5:
     resolution: {integrity: sha1-yW6jMypSFpnQr6rO7VEKVGVsYzk=, tarball: async-validator/download/async-validator-4.2.5.tgz}
-    dev: false
+    dev: true
 
   /async/3.2.4:
     resolution: {integrity: sha1-LSLgD4zd61/eXdM1IrVtHPVpqBw=, tarball: async/download/async-3.2.4.tgz}
@@ -3811,7 +3812,7 @@ packages:
 
   /classnames/2.3.2:
     resolution: {integrity: sha1-NR2BO/ATf8xqdqFriCCNJWCg2SQ=, tarball: classnames/download/classnames-2.3.2.tgz}
-    dev: false
+    dev: true
 
   /clean-stack/2.2.0:
     resolution: {integrity: sha1-7oRy27Ep5yezHooQpCfe6d/kAIs=, tarball: clean-stack/download/clean-stack-2.2.0.tgz}
@@ -3980,7 +3981,7 @@ packages:
 
   /compute-scroll-into-view/1.0.20:
     resolution: {integrity: sha1-F2i1Ui0RcnVPXQybAt469r5QakM=, tarball: compute-scroll-into-view/download/compute-scroll-into-view-1.0.20.tgz}
-    dev: false
+    dev: true
 
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=, tarball: concat-map/download/concat-map-0.0.1.tgz}
@@ -4093,7 +4094,7 @@ packages:
     resolution: {integrity: sha1-VaxDoduK5jmkvZlRHBSM3RuDobA=, tarball: copy-to-clipboard/download/copy-to-clipboard-3.3.3.tgz}
     dependencies:
       toggle-selection: 1.0.6
-    dev: false
+    dev: true
 
   /copyfiles/2.4.1:
     resolution: {integrity: sha1-0tz/YKqtEBXwnQtm5/Dxxc08XaU=, tarball: copyfiles/download/copyfiles-2.4.1.tgz}
@@ -4138,9 +4139,6 @@ packages:
     engines: {node: '>=14'}
     peerDependencies:
       typescript: '>=4.9.5'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
@@ -4366,7 +4364,7 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.2
-    dev: false
+    dev: true
 
   /dateformat/3.0.3:
     resolution: {integrity: sha1-puN0maTZqc+F71hyBE1ikByYia4=, tarball: dateformat/download/dateformat-3.0.3.tgz}
@@ -4374,7 +4372,7 @@ packages:
 
   /dayjs/1.11.10:
     resolution: {integrity: sha1-aKzqhTF6bhZEV9bWlHVkAppqFqA=, tarball: dayjs/download/dayjs-1.11.10.tgz}
-    dev: false
+    dev: true
 
   /debug/2.6.9:
     resolution: {integrity: sha1-XRKFFd8TT/Mn6QpMk/Tgd6U2NB8=, tarball: debug/download/debug-2.6.9.tgz}
@@ -4579,7 +4577,7 @@ packages:
 
   /dom-align/1.12.4:
     resolution: {integrity: sha1-NQOZLrKnz8su07Km0h4LnADVRRE=, tarball: dom-align/download/dom-align-1.12.4.tgz}
-    dev: false
+    dev: true
 
   /dom-serializer/1.4.1:
     resolution: {integrity: sha1-3l1Bsa6ikCFdxFptrorc8dMuLTA=, tarball: dom-serializer/download/dom-serializer-1.4.1.tgz}
@@ -5719,7 +5717,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
@@ -7410,7 +7408,7 @@ packages:
     resolution: {integrity: sha1-tje9O6nqvhIsg+lyBIOusQ0skEo=, tarball: json2mq/download/json2mq-0.2.0.tgz}
     dependencies:
       string-convert: 0.2.1
-    dev: false
+    dev: true
 
   /json5/2.2.3:
     resolution: {integrity: sha1-eM1vGhm9wStz21rQxh79ZsHikoM=, tarball: json5/download/json5-2.2.3.tgz}
@@ -7743,6 +7741,7 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=, tarball: lodash/download/lodash-4.17.21.tgz}
+    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha1-P727lbRoOsn8eFER55LlWNSr1QM=, tarball: log-symbols/download/log-symbols-4.1.0.tgz}
@@ -8100,7 +8099,7 @@ packages:
 
   /moment/2.29.4:
     resolution: {integrity: sha1-Pb4FKIn+fBsu2Wb8s6dzKJZO8Qg=, tarball: moment/download/moment-2.29.4.tgz}
-    dev: false
+    dev: true
 
   /moo-color/1.0.3:
     resolution: {integrity: sha1-1WQ1+DWcgoTYOsWAFt90J/6+znQ=, tarball: moo-color/download/moo-color-1.0.3.tgz}
@@ -8209,9 +8208,6 @@ packages:
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
     dependencies:
       whatwg-url: 5.0.0
     dev: true
@@ -8458,11 +8454,6 @@ packages:
     peerDependencies:
       '@swc-node/register': ^1.4.2
       '@swc/core': ^1.2.173
-    peerDependenciesMeta:
-      '@swc-node/register':
-        optional: true
-      '@swc/core':
-        optional: true
     dependencies:
       '@nrwl/tao': 16.8.1
       '@parcel/watcher': 2.0.4
@@ -9506,7 +9497,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       resize-observer-polyfill: 1.5.1
-    dev: false
+    dev: true
 
   /rc-cascader/3.7.3_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-HirSOLKD9yJs5MnzpCCjXLY/zII=, tarball: rc-cascader/download/rc-cascader-3.7.3.tgz}
@@ -9522,7 +9513,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-checkbox/3.0.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-+Xh3Eym+M51HnNgUZesuL4yCvIc=, tarball: rc-checkbox/download/rc-checkbox-3.0.1.tgz}
@@ -9535,7 +9526,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-collapse/3.4.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-ExC+etTNDc/GIsRfbDtf/e5AOtc=, tarball: rc-collapse/download/rc-collapse-3.4.2.tgz}
@@ -9550,7 +9541,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: false
+    dev: true
 
   /rc-dialog/9.0.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-qt/r3roUXyVsH6ybn1CfiTzbtbg=, tarball: rc-dialog/download/rc-dialog-9.0.2.tgz}
@@ -9565,7 +9556,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-drawer/6.3.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-+K9fr7qxm4NyI2Dc+T6WbYooda0=, tarball: rc-drawer/download/rc-drawer-6.3.0.tgz}
@@ -9580,7 +9571,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-dropdown/4.0.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-9l2dPYl1AkEFfbWdWnXkPNRXa2g=, tarball: rc-dropdown/download/rc-dropdown-4.0.1.tgz}
@@ -9594,7 +9585,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-field-form/1.34.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-hGO3mkSEKjQYmRlfNk6VLEAat/E=, tarball: rc-field-form/download/rc-field-form-1.34.2.tgz}
@@ -9608,7 +9599,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-image/5.13.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Htm4UqQLXv80eGun0vDp0m7quHQ=, tarball: rc-image/download/rc-image-5.13.0.tgz}
@@ -9624,7 +9615,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-input-number/7.3.11_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-xwiXBaIg4aWbqXT6v4lpPgDdJEI=, tarball: rc-input-number/download/rc-input-number-7.3.11.tgz}
@@ -9637,7 +9628,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-input/0.1.4_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-RctLogmubMg1oqy4Yp1PjwyzR+A=, tarball: rc-input/download/rc-input-0.1.4.tgz}
@@ -9650,7 +9641,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-mentions/1.13.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-yIS3DhUFoZfxsyp8azkJDbaZKnI=, tarball: rc-mentions/download/rc-mentions-1.13.1.tgz}
@@ -9666,7 +9657,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-menu/9.8.4_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-WL8Z1HHjx0/0vP2w8Co4JuviVTs=, tarball: rc-menu/download/rc-menu-9.8.4.tgz}
@@ -9682,7 +9673,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-motion/2.9.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-nhihuNYeUoqXNpz5p2AemykgVxA=, tarball: rc-motion/download/rc-motion-2.9.0.tgz}
@@ -9695,7 +9686,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-notification/4.6.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Bo6GdPS9eSakR+ylEpFdS0GxXJE=, tarball: rc-notification/download/rc-notification-4.6.1.tgz}
@@ -9710,7 +9701,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-overflow/1.3.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-cu5J6FoTCNjU471TKF3B8+C8ziw=, tarball: rc-overflow/download/rc-overflow-1.3.2.tgz}
@@ -9724,7 +9715,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-pagination/3.2.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Ty/bqf2sD0jlyfsRQZc4GBOK9+E=, tarball: rc-pagination/download/rc-pagination-3.2.0.tgz}
@@ -9736,7 +9727,7 @@ packages:
       classnames: 2.3.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-picker/2.7.6_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-A9hViI0YeNiUa6t3o9JEd/06B5I=, tarball: rc-picker/download/rc-picker-2.7.6.tgz}
@@ -9755,7 +9746,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: false
+    dev: true
 
   /rc-progress/3.4.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-+N+e6V55BJAXGrazG/BzA83HmYA=, tarball: rc-progress/download/rc-progress-3.4.2.tgz}
@@ -9768,7 +9759,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-rate/2.9.3_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-swqAQ//LMnurBTzXhQjgcBXYpIM=, tarball: rc-rate/download/rc-rate-2.9.3.tgz}
@@ -9782,7 +9773,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-resize-observer/1.4.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-e7ph5rPGBINJgGR8zmRRkUdQ0Mw=, tarball: rc-resize-observer/download/rc-resize-observer-1.4.0.tgz}
@@ -9796,7 +9787,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       resize-observer-polyfill: 1.5.1
-    dev: false
+    dev: true
 
   /rc-segmented/2.1.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-FMkHeh2unCzLLvX7xWYsHEjHzo4=, tarball: rc-segmented/download/rc-segmented-2.1.2.tgz}
@@ -9810,7 +9801,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-select/14.1.18_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-8dlSMxMs2pwUhZYyVCVbg+l6N6k=, tarball: rc-select/download/rc-select-14.1.18.tgz}
@@ -9828,7 +9819,7 @@ packages:
       rc-virtual-list: 3.11.2_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-slider/10.0.1_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-cFjGj/Hhqk58NTbl4QEovbzLh/k=, tarball: rc-slider/download/rc-slider-10.0.1.tgz}
@@ -9843,7 +9834,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: false
+    dev: true
 
   /rc-steps/5.0.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-LiQD8t1p6zlm1l9GH346juHvaf4=, tarball: rc-steps/download/rc-steps-5.0.0.tgz}
@@ -9857,7 +9848,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-switch/3.2.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-0AH3fxJmTVJZW09vtCXdnmb7qOg=, tarball: rc-switch/download/rc-switch-3.2.2.tgz}
@@ -9870,7 +9861,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-table/7.26.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-nVF+f6US51cf3MRT6xvxnt+sb7w=, tarball: rc-table/download/rc-table-7.26.0.tgz}
@@ -9886,7 +9877,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: false
+    dev: true
 
   /rc-tabs/12.5.10_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-DkHHI/rGbE8LytMnFCn/9mU7ByE=, tarball: rc-tabs/download/rc-tabs-12.5.10.tgz}
@@ -9904,7 +9895,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-textarea/0.4.7_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Yn9mLUb5ngBZ0cHryNtAxlM5/pA=, tarball: rc-textarea/download/rc-textarea-0.4.7.tgz}
@@ -9919,7 +9910,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       shallowequal: 1.1.0
-    dev: false
+    dev: true
 
   /rc-tooltip/5.2.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-5cr6js6/eBCJNqC8uTwVD6gayTs=, tarball: rc-tooltip/download/rc-tooltip-5.2.2.tgz}
@@ -9932,7 +9923,7 @@ packages:
       rc-trigger: 5.3.4_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-tree-select/5.5.5_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-0os7RdoeggzSF2K6Duk8GUKbs2k=, tarball: rc-tree-select/download/rc-tree-select-5.5.5.tgz}
@@ -9947,7 +9938,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-tree/5.7.12_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-aRDlUTkJY3CJNsLL+SX53v9KbXY=, tarball: rc-tree/download/rc-tree-5.7.12.tgz}
@@ -9963,7 +9954,7 @@ packages:
       rc-virtual-list: 3.11.2_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-trigger/5.3.4_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-a0sm4yglZ3yDfR601whQNe7PmmE=, tarball: rc-trigger/download/rc-trigger-5.3.4.tgz}
@@ -9979,7 +9970,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-upload/4.3.5_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-Evxpsq900IZGoQSCiDG8r0QHbto=, tarball: rc-upload/download/rc-upload-4.3.5.tgz}
@@ -9992,7 +9983,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /rc-util/5.38.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-GKPRwmujxD+r++YwPoJdq9nl9PA=, tarball: rc-util/download/rc-util-5.38.0.tgz}
@@ -10004,7 +9995,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-is: 18.2.0
-    dev: false
+    dev: true
 
   /rc-virtual-list/3.11.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha1-64WcIlcjOv8Qhk8EHlvMifeBS7c=, tarball: rc-virtual-list/download/rc-virtual-list-3.11.2.tgz}
@@ -10019,7 +10010,7 @@ packages:
       rc-util: 5.38.0_sfoxds7t5ydpegc3knd667wn6m
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /react-dom/17.0.2_react@17.0.2:
     resolution: {integrity: sha1-7P+2hF462Nv83EmPDQqTlzZQLCM=, tarball: react-dom/download/react-dom-17.0.2.tgz}
@@ -10051,6 +10042,7 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha1-GZQx7qqi4J+GQn77tPFHPttHYJs=, tarball: react-is/download/react-is-18.2.0.tgz}
+    dev: true
 
   /react-shallow-renderer/16.15.0_react@17.0.2:
     resolution: {integrity: sha1-SPss+bI9I83pZwj+UnOn00RvRFc=, tarball: react-shallow-renderer/download/react-shallow-renderer-16.15.0.tgz}
@@ -10221,6 +10213,7 @@ packages:
 
   /regenerator-runtime/0.14.0:
     resolution: {integrity: sha1-XhnWjrEtSG95fhWjxqkY987F60U=, tarball: regenerator-runtime/download/regenerator-runtime-0.14.0.tgz}
+    dev: true
 
   /regenerator-transform/0.15.2:
     resolution: {integrity: sha1-W7rli1IgmOvfCbyi+Dg4kpABx6Q=, tarball: regenerator-transform/download/regenerator-transform-0.15.2.tgz}
@@ -10343,7 +10336,7 @@ packages:
 
   /resize-observer-polyfill/1.5.1:
     resolution: {integrity: sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=, tarball: resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz}
-    dev: false
+    dev: true
 
   /resolve-cwd/3.0.0:
     resolution: {integrity: sha1-DwB18bslRHZs9zumpuKt/ryxPy0=, tarball: resolve-cwd/download/resolve-cwd-3.0.0.tgz}
@@ -10651,7 +10644,7 @@ packages:
     resolution: {integrity: sha1-08SClZ3Eg+N5YtFSElTjKV0NFYc=, tarball: scroll-into-view-if-needed/download/scroll-into-view-if-needed-2.2.31.tgz}
     dependencies:
       compute-scroll-into-view: 1.0.20
-    dev: false
+    dev: true
 
   /semver/5.7.2:
     resolution: {integrity: sha1-SNVdtzfDKHzUg14X+hP+rOHEHvg=, tarball: semver/download/semver-5.7.2.tgz}
@@ -10721,7 +10714,6 @@ packages:
 
   /shallowequal/1.1.0:
     resolution: {integrity: sha1-GI1SHelbkIdAT9TctosT3wrk5/g=, tarball: shallowequal/download/shallowequal-1.1.0.tgz}
-    dev: false
 
   /shebang-command/1.2.0:
     resolution: {integrity: sha1-RKrGW2lbAzmJaMOfNj/uXer98eo=, tarball: shebang-command/download/shebang-command-1.2.0.tgz}
@@ -11034,7 +11026,7 @@ packages:
 
   /string-convert/0.2.1:
     resolution: {integrity: sha1-aYLMMEn7tM2F+LJFaLnZvznu/5c=, tarball: string-convert/download/string-convert-0.2.1.tgz}
-    dev: false
+    dev: true
 
   /string-length/4.0.2:
     resolution: {integrity: sha1-qKjce9XBqCubPIuH4SX2aHG25Xo=, tarball: string-length/download/string-length-4.0.2.tgz}
@@ -11350,7 +11342,7 @@ packages:
   /throttle-debounce/5.0.0:
     resolution: {integrity: sha1-oXpAOegqLtOKXnJo5BMtaWDUGTM=, tarball: throttle-debounce/download/throttle-debounce-5.0.0.tgz}
     engines: {node: '>=12.22'}
-    dev: false
+    dev: true
 
   /through/2.3.8:
     resolution: {integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=, tarball: through/download/through-2.3.8.tgz}
@@ -11420,7 +11412,7 @@ packages:
 
   /toggle-selection/1.0.6:
     resolution: {integrity: sha1-bkWxJj8gF/oKzH2J14sVuL932jI=, tarball: toggle-selection/download/toggle-selection-1.0.6.tgz}
-    dev: false
+    dev: true
 
   /tough-cookie/2.5.0:
     resolution: {integrity: sha1-zZ+yoKodWhK0c72fuW+j3P9lreI=, tarball: tough-cookie/download/tough-cookie-2.5.0.tgz}
@@ -11769,7 +11761,7 @@ packages:
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: false
+    dev: true
 
   /use/3.1.1:
     resolution: {integrity: sha1-1QyMrHmhn7wg8pEfVuuXP04QBw8=, tarball: use/download/use-3.1.1.tgz}
