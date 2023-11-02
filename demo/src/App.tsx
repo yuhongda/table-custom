@@ -1,7 +1,6 @@
 import logo from './logo.svg'
 import './App.css'
 import styled from 'styled-components'
-import 'antd/dist/antd.css'
 import { Divider, Typography, Row, Col } from 'antd'
 const { Title } = Typography
 import { Example } from './components/Example'
