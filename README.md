@@ -10,12 +10,13 @@ yarn add @silverage/table-custom
 pnpm add @silverage/table-custom
 ```
 
-`antd` is in `peerDependencies`, choose your version.
+`antd` is in `peerDependencies`, choose your own version.
 
 ⚠️ NOTE: The data pesistence is using `use-local-storage-state`.
 
 - For React 17 and below, use `npm i use-local-storage-state@17`
 - For React 18 and later, use `npm i use-local-storage-state`
+(For details, see [this](https://github.com/astoilkov/use-local-storage-state))
 
 ## Usage
 
@@ -33,6 +34,14 @@ import { TableCustom } from '@silverage/table-custom'
 
 ## Options
 
+### `columns`
+
+type: `ColumnTypeCustom<T>[]`
+
+default: `undefined`
+
+> Inherited from ColumnType in antd Table. Adding `disableCustom` prop to indicate that the column disable for customization.
+
 ### `storageKey`
 
 type: `string`
@@ -41,26 +50,58 @@ default: `undefined`
 
 > Data Persistence Key. Set it to use localstorage to persist settings.
 
-### `speed`
+### `modalTitle`
 
-type: `number`
+type: `string`
 
-default: `200`
+default: `''`
 
-> It's how many words can be read per minute.
+> The setting modal's title.
 
-### `time`
+### `savedColumns`
 
-type: `number`
-
-default: `undefined`
-
-> Set this will skip the read time calculation, and just use this number as total read time to convert to emoji.
-
-### `displayRender`
-
-type: `(emoji: ReactNode[], totalTime: number) => ReactNode`
+type: `any[]`
 
 default: `undefined`
 
-> You can make your own custom display by this option.
+> Do data persistence yourself
+
+### `sortable`
+
+type: `boolean`
+
+default: `undefined`
+
+> Enable sorting solumn.
+
+### `sortHandler`
+
+type: `ReactNode`
+
+default: `undefined`
+
+> Customize sorting handler icon.
+
+### `openCustomModal`
+
+type: `boolean`
+
+default: `undefined`
+
+> Control setting model visible by yourself.
+
+### `onChecklistChange`
+
+type: `(checkedList: any[], sortedList: any[]) => void`
+
+default: `undefined`
+
+> The callback function when column changed.
+
+### `onCustomModalClose`
+
+type: `() => void`
+
+default: `undefined`
+
+> The callback function when setting modal closed.
