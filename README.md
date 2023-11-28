@@ -72,7 +72,7 @@ type: `boolean`
 
 default: `undefined`
 
-> Enable sorting solumn.
+> Enable sorting column.
 
 ### `sortHandler`
 
