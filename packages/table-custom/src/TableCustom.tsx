@@ -251,7 +251,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         o.children ? [o.value, ...o.children.map((c: any) => c.value)] : o.value
       )
     )
-  }, [JSON.stringify(tableColumns)])
+  }, [tableColumns])
 
   useEffect(() => {
     if (storageKey) {
