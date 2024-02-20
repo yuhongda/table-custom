@@ -179,7 +179,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       setSortedList(newColumns)
       setSortInfo(null)
     }
-  }, [sortInfo, JSON.stringify(sortedList)])
+  }, [sortInfo, sortedList])
 
   const filterColumns = useCallback(
     (columns: any[]) =>
