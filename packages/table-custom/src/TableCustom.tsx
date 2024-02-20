@@ -204,7 +204,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       return filterColumns(sortedList)
     }
     return filterColumns(options)
-  }, [JSON.stringify(sortedList), filterColumns, sortable, options])
+  }, [sortedList, filterColumns, sortable, options])
 
   const sortedOptions = useMemo(() => {
     if (sortedList) {
@@ -231,7 +231,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         }
       })
     }
-  }, [JSON.stringify(sortedList), options])
+  }, [sortedList, options])
 
   useEffect(() => {
     setCheckedList(
@@ -279,7 +279,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     if (onChecklistChange) {
       onChecklistChange(checkedList, sortedList)
     }
-  }, [JSON.stringify(sortedList)])
+  }, [sortedList])
 
   const handleDragEnd =
     ({ value }: Record<string, any>) =>
