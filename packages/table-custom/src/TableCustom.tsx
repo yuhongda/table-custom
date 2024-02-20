@@ -179,7 +179,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       setSortedList(newColumns)
       setSortInfo(null)
     }
-  }, [sortInfo, JSON.stringify(sortedList.map(item => item.value))])
+  }, [sortInfo, JSON.stringify(sortedList.map((item: any) => item.value))])
 
   const filterColumns = useCallback(
     (columns: any[]) =>
@@ -204,7 +204,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       return filterColumns(sortedList)
     }
     return filterColumns(options)
-  }, [JSON.stringify(sortedList.map(item => item.value)), filterColumns, sortable, options])
+  }, [JSON.stringify(sortedList.map((item: any) => item.value)), filterColumns, sortable, options])
 
   const sortedOptions = useMemo(() => {
     if (sortedList) {
@@ -231,7 +231,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         }
       })
     }
-  }, [JSON.stringify(sortedList.map(item => item.value)), options])
+  }, [JSON.stringify(sortedList.map((item: any) => item.value)), options])
 
   useEffect(() => {
     setCheckedList(
@@ -251,7 +251,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         o.children ? [o.value, ...o.children.map((c: any) => c.value)] : o.value
       )
     )
-  }, [JSON.stringify(tableColumns.map(item => item.value))])
+  }, [JSON.stringify(tableColumns.map((item) => item.value))])
 
   useEffect(() => {
     if (storageKey) {
@@ -279,7 +279,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     if (onChecklistChange) {
       onChecklistChange(checkedList, sortedList)
     }
-  }, [JSON.stringify(sortedList.map(item => item.value))])
+  }, [JSON.stringify(sortedList.map((item: any) => item.value))])
 
   const handleDragEnd =
     ({ value }: Record<string, any>) =>
@@ -288,10 +288,9 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       const { items } = active.data.current?.sortable ?? {}
 
       if (active && over && active.id !== over?.id && items) {
-        const foundItem =
-          sortedOptions
-            ?.flatMap((o: any) => [o, ...o.children])
-            .find((item: any) => item.value === over.id)
+        const foundItem = sortedOptions
+          ?.flatMap((o: any) => [o, ...o.children])
+          .find((item: any) => item.value === over.id)
         if (foundItem?.disableCustom) {
           return
         }
