@@ -207,7 +207,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
   }, [JSON.stringify(sortedList.map((item: any) => item.value)), filterColumns, sortable, options])
 
   const sortedOptions = useMemo(() => {
-    if (sortedList) {
+    if (sortedList && sortable) {
       // sort options by sortedList
       const newColumns = [...options]
       newColumns.sort((a: any, b: any) => {
@@ -231,6 +231,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         }
       })
     }
+    return options
   }, [JSON.stringify(sortedList.map((item: any) => item.value)), options])
 
   useEffect(() => {
