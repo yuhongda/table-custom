@@ -179,7 +179,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       setSortedList(newColumns)
       setSortInfo(null)
     }
-  }, [sortInfo, JSON.stringify(sortedList)])
+  }, [sortInfo, JSON.stringify(sortedList.map(item => item.value))])
 
   const filterColumns = useCallback(
     (columns: any[]) =>
@@ -204,7 +204,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
       return filterColumns(sortedList)
     }
     return filterColumns(options)
-  }, [JSON.stringify(sortedList), filterColumns, sortable, options])
+  }, [JSON.stringify(sortedList.map(item => item.value)), filterColumns, sortable, options])
 
   const sortedOptions = useMemo(() => {
     if (sortedList) {
@@ -231,7 +231,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         }
       })
     }
-  }, [JSON.stringify(sortedList), options])
+  }, [JSON.stringify(sortedList.map(item => item.value)), options])
 
   useEffect(() => {
     setCheckedList(
@@ -251,7 +251,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
         o.children ? [o.value, ...o.children.map((c: any) => c.value)] : o.value
       )
     )
-  }, [JSON.stringify(tableColumns)])
+  }, [JSON.stringify(tableColumns.map(item => item.value))])
 
   useEffect(() => {
     if (storageKey) {
@@ -279,7 +279,7 @@ const TableCustom: React.FC<TableCustomProps<any>> = ({
     if (onChecklistChange) {
       onChecklistChange(checkedList, sortedList)
     }
-  }, [JSON.stringify(sortedList)])
+  }, [JSON.stringify(sortedList.map(item => item.value))])
 
   const handleDragEnd =
     ({ value }: Record<string, any>) =>
