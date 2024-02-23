@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { ReactElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { Checkbox, Col, Divider, Modal, Row, Table } from 'antd'
-import type { ColumnType } from 'antd/lib/table'
+import type { ColumnType, TableProps } from 'antd/lib/table'
 import styled from 'styled-components'
 import { SettingOutlined } from '@ant-design/icons'
 import useLocalStorageState from 'use-local-storage-state'
@@ -66,7 +66,7 @@ export interface ColumnTypeCustom<T> extends ColumnType<T> {
   value?: any
 }
 
-export interface TableCustomProps<T> {
+export interface TableCustomProps<T> extends TableProps<T> {
   columns: ColumnTypeCustom<T>[]
   storageKey?: string
   /**

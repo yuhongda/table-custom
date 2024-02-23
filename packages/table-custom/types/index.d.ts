@@ -1,6 +1,6 @@
 import * as React from 'react';
 import React__default, { ReactNode } from 'react';
-import { ColumnType } from 'antd/lib/table';
+import { TableProps, ColumnType } from 'antd/lib/table';
 
 interface ColumnTypeCustom<T> extends ColumnType<T> {
     disableCustom?: boolean;
@@ -8,7 +8,7 @@ interface ColumnTypeCustom<T> extends ColumnType<T> {
     label?: string;
     value?: any;
 }
-interface TableCustomProps<T> {
+interface TableCustomProps<T> extends TableProps<T> {
     columns: ColumnTypeCustom<T>[];
     storageKey?: string;
     /**
