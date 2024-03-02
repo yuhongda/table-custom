@@ -1,0 +1,6 @@
+{
+  "name": "@silverage/table-custom",
+  "description": "Make Antd's table component support sorting and toggle display on columns.",
+  "version": "0.1.9",
+  "exports": "./src/index.ts"
+}

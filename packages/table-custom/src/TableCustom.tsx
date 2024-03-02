@@ -7,7 +7,6 @@ import type { ColumnType, TableProps } from 'antd/lib/table'
 import styled from 'styled-components'
 import { SettingOutlined } from '@ant-design/icons'
 import useLocalStorageState from 'use-local-storage-state'
-import s from './style.module.scss'
 import {
   DndContext,
   closestCenter,

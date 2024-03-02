@@ -1,7 +1,7 @@
 {
   "name": "@silverage/table-custom",
   "version": "0.1.9",
-  "description": "",
+  "description": "Make Antd's table component support sorting and toggle display on columns.",
   "main": "lib/index.js",
   "module": "lib/es/index.es.js",
   "unpkg": "lib/umd/index.min.js",
